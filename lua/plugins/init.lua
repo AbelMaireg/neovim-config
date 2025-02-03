@@ -20,6 +20,6 @@ return {
 
     {
         "neoclide/coc.nvim",
-        branch = "master",
+        branch = "release",
     },
 }

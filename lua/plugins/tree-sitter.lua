@@ -10,7 +10,6 @@ return {
                 "css",
                 "javascript",
                 "typescript",
-                "react",
                 "vue",
                 "angular",
                 "prisma",
