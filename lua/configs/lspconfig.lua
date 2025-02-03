@@ -7,7 +7,6 @@ local servers = {
     "cssls",
     "ts_ls",
     "denols",
-    "vuels",
     "dockerls",
     "yamlls",
     "clangd",
@@ -43,15 +42,6 @@ dap.adapters.codelldb = {
     port = 13000,
 }
 
--- dap.adapters.codelldb = {
---     type = "server",
---     port = "${port}",
---     executable = {
---         command = "/home/abelmaireg/.local/share/nvim/mason/bin/codelldb",
---         args = { "--port", "${port}" },
---     },
--- }
-
 dap.configurations.cpp = {
     {
         name = "Launch file",
@@ -70,11 +60,11 @@ dap.configurations.rust = {
         type = "lldb",
         request = "launch",
         cargo = {
-            args = { "test", "--no-run", "--lib" }, -- Cargo command line to build the debug target
-            env = { RUSTFLAGS = "-Clinker=ld.mold" }, -- Extra environment variables.
-            cwd = "${workspaceFolder}",         -- Cargo working directory.
-            problemMatcher = "$rustc",          -- Problem matcher(s) to apply to cargo output.
-            filter = {                          -- Filter applied to compilation artifacts.
+            args = { "test", "--no-run", "--lib" },
+            env = { RUSTFLAGS = "-Clinker=ld.mold" },
+            cwd = "${workspaceFolder}",
+            problemMatcher = "$rustc",
+            filter = {
                 name = "mylib",
                 kind = "lib",
             },
