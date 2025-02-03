@@ -2,6 +2,7 @@ require "nvchad.options"
 
 local api = vim.api
 local opt = vim.opt
+local create_autocmd = vim.api.nvim_create_autocmd
 
 -- visuals
 opt.cursorline = true
@@ -17,10 +18,29 @@ opt.foldlevel = 99
 opt.foldnestmax = 10
 opt.foldlevelstart = 99
 
-opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamed"
 
 opt.shiftwidth = 4
 
 opt.swapfile = false
 opt.backup = false
 opt.writebackup = false
+
+create_autocmd("VimEnter", {
+    command = ":silent !kitty @ set-spacing padding=0 margin=0",
+})
+
+create_autocmd("VimLeavePre", {
+    command = ":silent !kitty @ set-spacing padding=20 margin=10",
+})
+
+create_autocmd("TextYankPost", {
+    pattern = "*",
+    callback = function()
+        vim.highlight.on_yank {
+            higroup = "IncSearch",
+            timeout = 200,
+            on_visual = true,
+        }
+    end,
+})
