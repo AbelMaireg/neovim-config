@@ -1,4 +1,4 @@
-require "nvchad.options"
+require("nvchad.options")
 
 local api = vim.api
 local opt = vim.opt
@@ -37,10 +37,10 @@ create_autocmd("VimLeavePre", {
 create_autocmd("TextYankPost", {
     pattern = "*",
     callback = function()
-        vim.highlight.on_yank {
+        vim.highlight.on_yank({
             higroup = "IncSearch",
             timeout = 200,
             on_visual = true,
-        }
+        })
     end,
 })

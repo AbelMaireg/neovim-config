@@ -1,4 +1,4 @@
-require "nvchad.mappings"
+require("nvchad.mappings")
 
 local nomap = vim.keymap.del
 
@@ -19,7 +19,7 @@ map("n", "<A-Right>", ":vertical resize +1<CR>", { desc = "Increase width" })
 map("n", "<A>=", ":wincmd =<CR>", { desc = "Equalize panes size" })
 
 -- buffer
-local tabufline = require "nvchad.tabufline"
+local tabufline = require("nvchad.tabufline")
 map("n", "<Leader>tn", function()
     tabufline.move_buf(1)
 end, { desc = "move tab to the right" })
@@ -33,10 +33,10 @@ map("n", "<Leader>tX", function()
     tabufline.closeAllBufs(true)
 end, { desc = "close all tabs" })
 map("n", "<Leader>tl", function()
-    tabufline.closeBufs_at_direction "left"
+    tabufline.closeBufs_at_direction("left")
 end, { desc = "close all tabs to the left" })
 map("n", "<Leader>tr", function()
-    tabufline.closeBufs_at_direction "right"
+    tabufline.closeBufs_at_direction("right")
 end, { desc = "close all tabs to the right" })
 
 -- motion
@@ -47,7 +47,11 @@ map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "move selected line up" })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "move selected line down" })
 
 -- terminal
-for _, mapping in ipairs { { "<A-h>", "horizontal" }, { "<A-v>", "vertical" }, { "<A-i>", "float" } } do
+for _, mapping in ipairs({
+    { "<A-h>", "horizontal" },
+    { "<A-v>", "vertical" },
+    { "<A-i>", "float" },
+}) do
     map({ "n", "t" }, mapping[1], function()
         require("nvterm.terminal").toggle(mapping[2])
     end, { desc = "terminal" .. mapping[2] })
@@ -58,8 +62,8 @@ map("n", "<Leader>rt", function()
 end, { desc = "run test" })
 
 -- nvim-dap
-local dap = require "dap"
-local dap_ui_widgets = require "dap.ui.widgets"
+local dap = require("dap")
+local dap_ui_widgets = require("dap.ui.widgets")
 -- map("n", "<Leader>dl", function()
 --     dap.step_into()
 -- end, { desc = "Debugger step into" })
@@ -104,7 +108,7 @@ map("n", "<Leader>B", function()
     dap.set_breakpoint()
 end, { desc = "debugger set-breakpoint" })
 map("n", "<Leader>lp", function()
-    dap.set_breakpoint(nil, nil, vim.fn.input "Log point message: ")
+    dap.set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 end, { desc = "debugger set-breakpoint" })
 map("n", "<Leader>dr", function()
     dap.repl.open()
@@ -126,7 +130,7 @@ map("n", "<Leader>ds", function()
 end, { desc = "debugger ui widgets centered_float scoped" })
 
 -- telescope
-local telescope_builtin = require "telescope.builtin"
+local telescope_builtin = require("telescope.builtin")
 
 map("n", "<Leader>gb", function()
     telescope_builtin.git_branches()
@@ -145,10 +149,25 @@ map("n", "gL", function()
 end, { desc = "List diagnostics" })
 
 -- rustaceanvim
-map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
+map(
+    "n",
+    "<Leader>dt",
+    "<cmd>lua vim.cmd('RustLsp testables')<CR>",
+    { desc = "Debugger testables" }
+)
 
 -- diagonistics
 map("n", "gl", vim.diagnostic.open_float, { desc = "Show diagnostic popup" })
-map("n", "<leader>gq", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+map(
+    "n",
+    "<leader>gq",
+    vim.diagnostic.setloclist,
+    { desc = "Open diagnostics list" }
+)
 map("n", "<leader>gn", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-map("n", "<leader>gp", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+map(
+    "n",
+    "<leader>gp",
+    vim.diagnostic.goto_prev,
+    { desc = "Previous diagnostic" }
+)

@@ -1,28 +1,29 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local lspconfig = require "lspconfig"
-local mason = require "mason"
-local mason_lspconfig = require "mason-lspconfig"
-local mason_registry = require "mason-registry"
+local lspconfig = require("lspconfig")
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
+local mason_registry = require("mason-registry")
 
-mason.setup {}
-mason_lspconfig.setup {
+mason.setup({})
+mason_lspconfig.setup({
     ensure_installed = {
         "ts_ls",
         "volar",
     },
     handler = {
         function(server)
-            lspconfig[server].setup {}
+            lspconfig[server].setup({})
         end,
         volar = function()
-            lspconfig.volar.setup {}
+            lspconfig.volar.setup({})
         end,
         ts_ls = function()
-            local vue_typescript_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
-                .. "/node_modules/@vue/language-server"
+            local vue_typescript_server_path = mason_registry
+                .get_package("vue-language-server")
+                :get_install_path() .. "/node_modules/@vue/language-server"
 
-            lspconfig.ts_ls.setup {
+            lspconfig.ts_ls.setup({
                 init_options = {
                     plugins = {
                         {
@@ -41,10 +42,10 @@ mason_lspconfig.setup {
                     "typescriptreact",
                     "vue",
                 },
-            }
+            })
         end,
     },
-}
+})
 
 local servers = {
     "bashls",
@@ -80,7 +81,7 @@ for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup(config)
 end
 
-local dap = require "dap"
+local dap = require("dap")
 dap.adapters.codelldb = {
     type = "server",
     host = "127.0.0.1",

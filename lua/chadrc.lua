@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end,
 })
 
-require("nvterm").setup {
+require("nvterm").setup({
     terminals = {
         shell = vim.o.shell,
         list = {},
@@ -54,6 +54,6 @@ require("nvterm").setup {
         close_on_exit = true,
         auto_insert = true,
     },
-}
+})
 
 return M
