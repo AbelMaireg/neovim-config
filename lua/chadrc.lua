@@ -13,7 +13,7 @@ M.ui = {
 }
 
 M.base46 = {
-    theme = "ayu_dark",
+    theme = "radium",
     transparency = true,
 
     hl_override = {
