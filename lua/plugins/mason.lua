@@ -9,6 +9,7 @@ return {
                 "clangd",
                 "clang-format",
                 "typescript-language-server",
+                "codelldb",
             },
         },
     },
