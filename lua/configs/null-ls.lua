@@ -5,10 +5,7 @@ local opts = {
     sources = {
         null_ls.builtins.formatting.clang_format,
         null_ls.builtins.formatting.prettier.with {
-            filetypes = { "javascript", "typescript", "vue" },
-        },
-        null_ls.builtins.formatting.eslint_d.with {
-            filetypes = { "html", "css" },
+            filetypes = { "javascript", "typescript", "vue", "html", "css" },
         },
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.dart_format,
