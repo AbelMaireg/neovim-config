@@ -12,9 +12,4 @@ return {
             require("nvterm").setup()
         end,
     },
-
-    {
-        "neoclide/coc.nvim",
-        branch = "release",
-    },
 }
