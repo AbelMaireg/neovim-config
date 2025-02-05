@@ -3,7 +3,6 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require("lspconfig")
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
-local mason_registry = require("mason-registry")
 
 mason.setup({})
 mason_lspconfig.setup({
@@ -19,29 +18,28 @@ mason_lspconfig.setup({
             lspconfig.volar.setup({})
         end,
         ts_ls = function()
-            local vue_typescript_server_path = mason_registry
-                .get_package("vue-language-server")
-                :get_install_path() .. "/node_modules/@vue/language-server"
+            local vue_typescript_plugin_path = vim.fn.stdpath("data")
+                ..
+                "/mason/packages/vue-language-server/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
 
             lspconfig.ts_ls.setup({
                 init_options = {
                     plugins = {
                         {
                             name = "@vue/typescript-plugin",
-                            location = vue_typescript_server_path,
-                            languages = { "vue", "javascript", "typescript" },
+                            location = vue_typescript_plugin_path,
+                            languages = { "vue" },
                         },
                     },
                 },
                 filetypes = {
-                    "javascript",
-                    "javascript.jsx",
-                    "javascriptreact",
                     "typescript",
-                    "typescript.tsx",
+                    "javascript",
+                    "javascriptreact",
                     "typescriptreact",
                     "vue",
                 },
+                single_file_support = false,
             })
         end,
     },
@@ -78,7 +76,34 @@ for _, lsp in ipairs(servers) do
     --     config.single_file_support = false
     -- end
 
-    lspconfig[lsp].setup(config)
+    if lsp == "ts_ls" then
+        local vue_typescript_plugin_path = vim.fn.stdpath("data")
+            ..
+            "/mason/packages/vue-language-server/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
+        lspconfig[lsp].setup({
+            lspconfig.ts_ls.setup({
+                init_options = {
+                    plugins = {
+                        {
+                            name = "@vue/typescript-plugin",
+                            location = vue_typescript_plugin_path,
+                            languages = { "vue" },
+                        },
+                    },
+                },
+                filetypes = {
+                    "typescript",
+                    "javascript",
+                    "javascriptreact",
+                    "typescriptreact",
+                    "vue",
+                },
+                single_file_support = false,
+            }),
+        })
+    else
+        lspconfig[lsp].setup(config)
+    end
 end
 
 local dap = require("dap")
