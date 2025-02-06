@@ -11,12 +11,19 @@ M.ui = {
 }
 
 M.base46 = {
-    theme = "rosepine",
-    transparency = true,
+    theme = "default-dark",
+    transparency = false,
 
     hl_override = {
         ["@comment"] = { fg = "#afafaf", italic = true },
     },
+}
+
+M.colorify = {
+    enabled = true,
+    mode = "virtual", -- fg, bg, virtual
+    virt_text = "󱓻 ",
+    highlight = { hex = true, lspvars = true },
 }
 
 return M
