@@ -24,6 +24,7 @@ return {
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
         config = function()
             require("dapui").setup()
+            require("configs.dap-conf")
         end,
     },
 }
