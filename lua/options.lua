@@ -26,6 +26,8 @@ opt.swapfile = false
 opt.backup = false
 opt.writebackup = false
 
+vim.lsp.inlay_hint.enable(true)
+
 create_autocmd("TextYankPost", {
     pattern = "*",
     callback = function()
@@ -43,4 +45,12 @@ create_autocmd("VimEnter", {
             require("nvim-tree.api").tree.open()
         end
     end,
+})
+
+create_autocmd({ "CursorHold" }, {
+    callback = vim.lsp.buf.document_highlight,
+})
+
+create_autocmd("CursorMoved", {
+    callback = vim.lsp.buf.clear_references,
 })

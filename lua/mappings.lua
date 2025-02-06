@@ -64,30 +64,6 @@ end, { desc = "run test" })
 -- nvim-dap
 local dap = require("dap")
 local dap_ui_widgets = require("dap.ui.widgets")
--- map("n", "<Leader>dl", function()
---     dap.step_into()
--- end, { desc = "Debugger step into" })
--- map("n", "<Leader>dj", function()
---     dap.step_over()
--- end, { desc = "Debugger step over" })
--- map("n", "<Leader>dk", function()
---     dap.step_out()
--- end, { desc = "Debugger step out" })
--- map("n", "<Leader>dc", function()
---     dap.continue()
--- end, { desc = "Debugger continue" })
--- map("n", "<Leader>db", function()
---     dap.toggle_breakpoint()
--- end, { desc = "Debugger toggle breakpoint" })
--- map("n", "<Leader>dd", function()
---     dap.set_breakpoint(vim.fn.input "Breakpoint condition: ")
--- end, { desc = "Debugger set conditional breakpoint" })
--- map("n", "<Leader>de", function()
---     dap.terminate()
--- end, { desc = "Debugger reset" })
--- map("n", "<Leader>dr", function()
---     dap.run_last()
--- end, { desc = "Debugger run last" })
 
 map("n", "<F5>", function()
     dap.continue()
@@ -164,10 +140,22 @@ map(
     vim.diagnostic.setloclist,
     { desc = "Open diagnostics list" }
 )
-map("n", "<leader>gn", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+
 map(
     "n",
-    "<leader>gp",
-    vim.diagnostic.goto_prev,
-    { desc = "Previous diagnostic" }
+    "gd",
+    vim.lsp.buf.definition,
+    { noremap = true, silent = true, desc = "go to definition" }
+)
+map(
+    "n",
+    "gD",
+    vim.lsp.buf.declaration,
+    { noremap = true, silent = true, desc = "go to declaration" }
+)
+map(
+    "n",
+    "<leader>sb",
+    vim.lsp.buf.rename,
+    { noremap = true, silent = true, desc = "rename word" }
 )
