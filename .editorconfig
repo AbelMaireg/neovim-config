@@ -13,6 +13,3 @@ indent_size = 4
 max_line_length = 80
 call_parentheses = "None"
 quote_style = "AutoPreferDouble"
-
-[*/tests/*.lua]
-indent_size = 4
