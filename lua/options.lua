@@ -49,7 +49,9 @@ create_autocmd("VimEnter", {
 })
 
 create_autocmd({ "CursorHold" }, {
-    callback = vim.lsp.buf.document_highlight,
+    callback = function()
+        require("safe-api-calls.document-highlight")()
+    end,
 })
 
 create_autocmd("CursorMoved", {
