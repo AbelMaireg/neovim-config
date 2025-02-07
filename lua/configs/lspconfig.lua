@@ -3,16 +3,17 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require("lspconfig")
 local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
-local lsp_handler = {
-    function(server)
-        lspconfig[server].setup({ vim_lsp_api_bindings })
-    end,
-}
 
 local vim_lsp_api_bindings = {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
+}
+
+local lsp_handler = {
+    function(server)
+        lspconfig[server].setup({ vim_lsp_api_bindings })
+    end,
 }
 
 local servers = {
@@ -33,7 +34,9 @@ local servers = {
 }
 
 lsp_handler["ts_ls"] = require("configs.lsp.ts_ls")
--- lsp_handler["denols"] = require("configs.lsp.denols")
+
+-- TODO: clandg is not supported with masonlspconfig
+lspconfig["clangd"].setup({ vim_lsp_api_bindings })
 
 mason.setup({})
 mason_lspconfig.setup({

@@ -19,6 +19,7 @@ return {
                 "vim",
                 "vimdoc",
                 "vue",
+                "zig",
             },
         },
     },
