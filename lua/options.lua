@@ -27,6 +27,7 @@ opt.backup = false
 opt.writebackup = false
 
 vim.lsp.inlay_hint.enable(true)
+require("barbecue.ui").toggle(true)
 
 create_autocmd("TextYankPost", {
     pattern = "*",
