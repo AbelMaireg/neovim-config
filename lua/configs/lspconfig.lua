@@ -1,45 +1,34 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require("lspconfig")
-local mason = require("mason")
-local mason_lspconfig = require("mason-lspconfig")
 
-local vim_lsp_api_bindings = {
+local default_vim_lsp_api_bindings = {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
 }
 
-local lsp_handler = {
-    function(server)
-        lspconfig[server].setup({ vim_lsp_api_bindings })
-    end,
-}
-
 local servers = {
-    "bashls",
-    "clangd",
-    "cmake",
-    "cssls",
-    -- "denols",
-    "dockerls",
-    "html",
-    "jsonls",
-    "marksman",
-    "prismals",
-    "pyright",
-    "ts_ls",
-    "volar",
-    "yamlls",
+    { "volar",    nil },
+    { "bashls",   nil },
+    { "clangd",   nil },
+    { "cmake",    nil },
+    { "cssls",    nil },
+    { "denols",   nil },
+    { "dockerls", nil },
+    { "html",     nil },
+    { "jsonls",   nil },
+    { "marksman", nil },
+    { "prismals", nil },
+    { "pyright",  nil },
+    { "ts_ls",    require("configs.lsp.ts_ls") },
+    { "yamlls",   nil },
 }
 
-lsp_handler["ts_ls"] = require("configs.lsp.ts_ls")
-
--- TODO: clandg is not supported with masonlspconfig
-lspconfig["clangd"].setup({ vim_lsp_api_bindings })
-
-mason.setup({})
-mason_lspconfig.setup({
-    ensure_installed = servers,
-    handler = lsp_handler,
-})
+for _, lsp in ipairs(servers) do
+    if lsp[2] == nil then
+        lspconfig[lsp[1]].setup(default_vim_lsp_api_bindings)
+    else
+        lspconfig[lsp[1]].setup(lsp[2])
+    end
+end
