@@ -14,7 +14,7 @@ local servers = {
     { "clangd",   nil },
     { "cmake",    nil },
     { "cssls",    nil },
-    { "denols",   nil },
+    -- { "denols",   require("configs.lsp.denols") },
     { "dockerls", nil },
     { "html",     nil },
     { "jsonls",   nil },
