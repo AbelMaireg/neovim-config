@@ -19,3 +19,10 @@ map(
     vim.lsp.buf.definition,
     { noremap = true, silent = true, desc = "go to definition" }
 )
+
+map(
+    "n",
+    "<leader><leader>",
+    ":lua vim.lsp.buf.clear_references() vim.lsp.buf.document_highlight()<CR>",
+    { noremap = true, silent = true, desc = "highlight references" }
+)

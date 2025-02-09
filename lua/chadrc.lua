@@ -47,7 +47,7 @@ M.ui = {
 }
 
 M.base46 = {
-    theme = "default-dark",
+    theme = "jellybeans",
     transparency = false,
 
     hl_override = {

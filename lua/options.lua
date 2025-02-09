@@ -9,6 +9,9 @@ opt.cursorline = true
 opt.cursorlineopt = "both"
 api.nvim_set_hl(0, "CursorLine", { bg = "#202020" })
 api.nvim_set_hl(0, "Visual", { bg = "#505050", underline = true })
+api.nvim_set_hl(0, "LspReferenceRead", { ctermbg = "LightYellow" })
+api.nvim_set_hl(0, "LspReferenceText", { ctermbg = "LightBlue" })
+api.nvim_set_hl(0, "LspReferenceWrite", { ctermbg = "LightGreen" })
 opt.scrolloff = 10
 opt.relativenumber = true
 
@@ -48,12 +51,24 @@ create_autocmd("VimEnter", {
     end,
 })
 
-create_autocmd({ "CursorHold" }, {
+create_autocmd({ "LspAttach" }, {
     callback = function()
-        require("safe-api-calls.document-highlight")()
-    end,
-})
+        local clients = vim.lsp.get_clients({ bufnr = 0 })
 
-create_autocmd("CursorMoved", {
-    callback = vim.lsp.buf.clear_references,
+        for _, client in ipairs(clients) do
+            if client.supports_method("textDocument/documentHighlight") then
+                vim.api.nvim_create_augroup("lsp_document_highlight", {})
+                vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+                    group = "lsp_document_highlight",
+                    buffer = 0,
+                    callback = vim.lsp.buf.document_highlight,
+                })
+                vim.api.nvim_create_autocmd("CursorMoved", {
+                    group = "lsp_document_highlight",
+                    buffer = 0,
+                    callback = vim.lsp.buf.clear_references,
+                })
+            end
+        end
+    end,
 })
