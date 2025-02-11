@@ -23,6 +23,6 @@ map(
 map(
     "n",
     "<leader><leader>",
-    ":lua vim.lsp.buf.clear_references() vim.lsp.buf.document_highlight()<CR>",
-    { noremap = true, silent = true, desc = "highlight references" }
+    vim.lsp.buf.code_action,
+    { noremap = true, silent = true, desc = "lsp code action" }
 )
