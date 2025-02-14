@@ -51,36 +51,11 @@ create_autocmd("VimEnter", {
     end,
 })
 
-create_autocmd({ "LspAttach" }, {
-    callback = function()
-        local clients = vim.lsp.get_clients({ bufnr = 0 })
-
-        for _, client in ipairs(clients) do
-            if client.supports_method("textDocument/documentHighlight") then
-                vim.api.nvim_create_augroup("lsp_document_highlight", {})
-                vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-                    group = "lsp_document_highlight",
-                    buffer = 0,
-                    callback = vim.lsp.buf.document_highlight,
-                })
-                vim.api.nvim_create_autocmd("CursorMoved", {
-                    group = "lsp_document_highlight",
-                    buffer = 0,
-                    callback = vim.lsp.buf.clear_references,
-                })
-            end
-        end
-    end,
-})
-
 local handlers = vim.lsp.handlers
 local orig_hover_handler = handlers["textDocument/hover"]
 
 handlers["textDocument/hover"] = function(err, result, ctx, config)
     if result and result.contents then
         orig_hover_handler(err, result, ctx, config)
-    else
-        -- Do nothing or show a custom message if you prefer
-        -- vim.notify("No hover information available.", vim.log.levels.INFO)
     end
 end
