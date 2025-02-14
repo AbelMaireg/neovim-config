@@ -1,8 +1,7 @@
-local lspconfig = require("lspconfig")
-
 return {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
-    root_dir = vim.fs.root(0, "deno.json"),
+    single_file_support = false,
+    root_dir = vim.fs.root(0, "tailwind.config.js"),
 }

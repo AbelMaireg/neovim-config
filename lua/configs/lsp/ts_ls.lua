@@ -5,7 +5,7 @@ return {
     on_init = on_init,
     capabilities = capabilities,
     single_file_support = false,
-    root_dir = lspconfig.util.root_pattern("package.json"),
+    root_dir = vim.fs.root("package.json", "package.json"),
     init_options = {
         plugins = {
             {

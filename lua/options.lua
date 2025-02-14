@@ -72,3 +72,15 @@ create_autocmd({ "LspAttach" }, {
         end
     end,
 })
+
+local handlers = vim.lsp.handlers
+local orig_hover_handler = handlers["textDocument/hover"]
+
+handlers["textDocument/hover"] = function(err, result, ctx, config)
+    if result and result.contents then
+        orig_hover_handler(err, result, ctx, config)
+    else
+        -- Do nothing or show a custom message if you prefer
+        -- vim.notify("No hover information available.", vim.log.levels.INFO)
+    end
+end
