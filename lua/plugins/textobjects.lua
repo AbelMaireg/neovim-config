@@ -79,10 +79,10 @@ return {
                         ["[C"] = "@class.outer",
                     },
                     goto_next = {
-                        ["]d"] = "@conditional.outer",
+                        ["]e"] = "@conditional.outer",
                     },
                     goto_previous = {
-                        ["[d"] = "@conditional.outer",
+                        ["[e"] = "@conditional.outer",
                     },
                 },
                 lsp_interop = {
