@@ -17,12 +17,12 @@ return {
                 },
             },
             explorer = { enabled = false },
-            gitbrowse = { enabled = false },
-            indent = { enabled = false },
-            input = { enabled = false },
-            picker = { enabled = false },
+            gitbrowse = { enabled = true },
+            indent = { enabled = true },
+            input = { enabled = true },
+            picker = { enabled = true },
             notifier = { enabled = true },
-            quickfile = { enabled = false },
+            quickfile = { enabled = true },
             scope = {
                 enabled = true,
                 keys = {
@@ -61,8 +61,8 @@ return {
                 },
             },
             scroll = { enabled = true },
-            statuscolumn = { enabled = false },
-            words = { enabled = false },
+            statuscolumn = { enabled = true },
+            words = { enabled = true },
         },
     },
 }

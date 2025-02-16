@@ -1,5 +1,3 @@
-local lspconfig = require("lspconfig")
-
 return {
     on_attach = on_attach,
     on_init = on_init,
