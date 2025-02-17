@@ -1,15 +1,11 @@
+# .editorconfig
 root = true
 
 [*]
-charset = utf-8
-end_of_line = lf
-insert_final_newline = false
-trim_trailing_whitespace = true
 indent_style = space
 indent_size = 4
+max_line_length = 80
+end_of_line = lf
 
 [*.lua]
-indent_size = 4
-max_line_length = 80
-call_parentheses = "None"
-quote_style = "AutoPreferDouble"
+quote_type = double

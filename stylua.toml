@@ -1,0 +1,15 @@
+# Indentation settings
+indent_type = "Spaces"
+indent_width = 2
+
+# Line width settings
+column_width = 80
+line_endings = "Unix"
+
+# Formatting rules
+quote_style = "AutoPreferDouble"
+call_parentheses = "Always"
+collapse_simple_statement = "Never"
+
+# Function formatting
+space_after_function_names = "Always"
