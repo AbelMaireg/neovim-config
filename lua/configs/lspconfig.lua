@@ -9,24 +9,24 @@ local default_vim_lsp_api_bindings = {
 }
 
 local servers = {
-    { "volar",       nil },
-    { "html",        nil },
-    { "cssls",       nil },
-    { "prismals",    nil },
-    -- { "denols",      require("configs.lsp.denols") },
-    { "ts_ls",       require("configs.lsp.ts_ls") },
-    { "tailwindcss", require("configs.lsp.tailwind") },
+    { name = "volar" },
+    { name = "html" },
+    { name = "cssls" },
+    { name = "prismals" },
+    { name = "denols",      opts = require("configs.lsp.denols") },
+    { name = "ts_ls",       opts = require("configs.lsp.ts_ls") },
+    { name = "tailwindcss", opts = require("configs.lsp.tailwind") },
 
-    { "bashls",      nil },
-    { "clangd",      nil },
-    { "pyright",     nil },
-    { "cmake",       nil },
-    { "dockerls",    nil },
-    { "jsonls",      nil },
-    { "yamlls",      nil },
-    { "marksman",    nil },
+    { name = "bashls" },
+    { name = "clangd" },
+    { name = "pyright" },
+    { name = "cmake" },
+    { name = "dockerls" },
+    { name = "jsonls" },
+    { name = "yamlls" },
+    { name = "marksman" },
 }
 
 for _, lsp in ipairs(servers) do
-    lspconfig[lsp[1]].setup(lsp[2] or default_vim_lsp_api_bindings)
+    lspconfig[lsp.name].setup(lsp.opts or default_vim_lsp_api_bindings)
 end

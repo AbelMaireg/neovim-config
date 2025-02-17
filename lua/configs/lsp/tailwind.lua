@@ -3,5 +3,5 @@ return {
     on_init = on_init,
     capabilities = capabilities,
     single_file_support = false,
-    root_dir = vim.fs.root(0, "tailwind.config.js"),
+    root_dir = vim.fs.root("tailwind.config.js", ".git"),
 }

@@ -3,7 +3,7 @@ return {
     on_init = on_init,
     capabilities = capabilities,
     single_file_support = false,
-    root_dir = vim.fs.root("package.json", "package.json"),
+    root_dir = vim.fs.root("package.json", ".git"),
     init_options = {
         plugins = {
             {
