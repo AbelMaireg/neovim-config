@@ -4,26 +4,26 @@ require ("configs.nvterm")
 local M = {}
 
 M.ui = {
-  statusline = {
-    theme = "minimal",
-    separator_style = "default",
-  },
+    statusline = {
+        theme = "minimal",
+        separator_style = "default",
+    },
 }
 
 M.base46 = {
-  theme = "solarized_osaka",
-  transparency = false,
+    theme = "solarized_osaka",
+    transparency = false,
 
-  hl_override = {
-    ["@comment"] = { fg = "#afafaf", italic = true },
-  },
+    hl_override = {
+        ["@comment"] = { fg = "#afafaf", italic = true },
+    },
 }
 
 M.colorify = {
-  enabled = true,
-  mode = "virtual", -- fg, bg, virtual
-  virt_text = "󱓻 ",
-  highlight = { hex = true, lspvars = true },
+    enabled = true,
+    mode = "virtual", -- fg, bg, virtual
+    virt_text = "󱓻 ",
+    highlight = { hex = true, lspvars = true },
 }
 
 return M
