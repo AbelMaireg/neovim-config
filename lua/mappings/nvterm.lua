@@ -10,10 +10,6 @@ for _, mapping in ipairs ({
     end, { desc = "terminal" .. mapping[2] })
 end
 
-map ("n", "<Leader>rt", function ()
-    require ("nvterm.terminal").send ("yarn test", "vertical")
-end, { desc = "run test" })
-
 map (
     "t",
     "<C-j>",

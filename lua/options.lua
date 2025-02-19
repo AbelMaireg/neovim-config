@@ -22,7 +22,6 @@ opt.foldnestmax = 10
 opt.foldlevelstart = 99
 
 opt.clipboard = "unnamed"
-opt.mouse = ""
 
 opt.shiftwidth = 4
 
