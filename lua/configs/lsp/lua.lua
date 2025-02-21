@@ -1,7 +1,4 @@
-return {
-    on_attach = require ("configs.lsp.configs.on_attach"),
-    on_init = require ("configs.lsp.configs.on_init"),
-    capabilities = require ("configs.lsp.configs.capabilities"),
+local custom = {
     settings = {
         Lua = {
             diagnostics = {
@@ -21,3 +18,6 @@ return {
         },
     },
 }
+
+default_lsp_config_merger = require ("utils.lsp-default-config-merger")
+return default_lsp_config_merger (custom)
