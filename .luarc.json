@@ -1,0 +1,6 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "inlay_hint_conf_gen"
+    ]
+}
