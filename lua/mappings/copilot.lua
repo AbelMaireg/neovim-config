@@ -16,13 +16,13 @@ vim.g.copilot_filetypes = {
     "markdown",
 }
 
-map("i", "<M-a>", 'copilot#Accept("\\<CR>")')
+map ("i", "<M-a>", 'copilot#Accept("\\<CR>")')
 
-map("i", "<M-r>", "<Plug>(copilot-dismiss)")
+map ("i", "<M-r>", "<Plug>(copilot-dismiss)")
 
-map("i", "<M-k>", "<Plug>(copilot-previous)")
-map("i", "<M-j>", "<Plug>(copilot-next)")
+map ("i", "<M-k>", "<Plug>(copilot-previous)")
+map ("i", "<M-j>", "<Plug>(copilot-next)")
 
-map("i", "<M-l>", "<Plug>(copilot-accept-word)")
+map ("i", "<M-l>", "<Plug>(copilot-accept-word)")
 
-map("i", "<M-o>", "<Plug>(copilot-accept-line)")
+map ("i", "<M-o>", "<Plug>(copilot-accept-line)")

@@ -1,4 +1,5 @@
 local custom = {
+    root_dir = vim.fs.root ("init.lua", ".git"),
     settings = {
         Lua = {
             diagnostics = {

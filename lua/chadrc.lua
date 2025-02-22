@@ -1,5 +1,5 @@
-require("configs.nvterm")
-require("utils.contains")
+require ("configs.nvterm")
+require ("utils.contains")
 
 ---@type ChadrcConfig
 local M = {}
@@ -23,16 +23,16 @@ M.ui = {
             "cursor",
         },
         modules = {
-            lsp = function()
+            lsp = function ()
                 local exo = { "null-ls", "GitHub Copilot" }
 
-                if rawget(vim, "lsp") then
-                    for _, client in ipairs(vim.lsp.get_clients()) do
-                        if contains(exo, client.name) then
+                if rawget (vim, "lsp") then
+                    for _, client in ipairs (vim.lsp.get_clients ()) do
+                        if contains (exo, client.name) then
                             goto continue
                         end
                         if
-                            client.attached_buffers[vim.api.nvim_win_get_buf(
+                            client.attached_buffers[vim.api.nvim_win_get_buf (
                                 vim.g.statusline_winid or 0
                             )]
                         then
@@ -47,8 +47,8 @@ M.ui = {
 
                 return ""
             end,
-            null_ls = function()
-                for _, client in ipairs(vim.lsp.get_clients()) do
+            null_ls = function ()
+                for _, client in ipairs (vim.lsp.get_clients ()) do
                     if client.name == "null-ls" then
                         return " ✨ "
                     end
@@ -56,8 +56,8 @@ M.ui = {
 
                 return ""
             end,
-            copilot = function()
-                for _, client in ipairs(vim.lsp.get_clients()) do
+            copilot = function ()
+                for _, client in ipairs (vim.lsp.get_clients ()) do
                     if client.name == "GitHub Copilot" then
                         return " 🎃 "
                     end
