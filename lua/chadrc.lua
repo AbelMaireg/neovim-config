@@ -1,4 +1,5 @@
-require ("configs.nvterm")
+require("configs.nvterm")
+require("utils.contains")
 
 ---@type ChadrcConfig
 local M = {}
@@ -9,31 +10,36 @@ M.ui = {
         separator_style = "default",
         order = {
             "mode",
+            "file",
             "git",
             "%=",
             "lsp_msg",
             "%=",
             "diagnostics",
             "lsp",
+            "copilot",
+            "null_ls",
             "cwd",
             "cursor",
         },
         modules = {
-            lsp = function ()
-                if rawget (vim, "lsp") then
-                    for _, client in ipairs (vim.lsp.get_clients ()) do
-                        if client.name == "null-ls" then
+            lsp = function()
+                local exo = { "null-ls", "GitHub Copilot" }
+
+                if rawget(vim, "lsp") then
+                    for _, client in ipairs(vim.lsp.get_clients()) do
+                        if contains(exo, client.name) then
                             goto continue
                         end
                         if
-                            client.attached_buffers[vim.api.nvim_win_get_buf (
+                            client.attached_buffers[vim.api.nvim_win_get_buf(
                                 vim.g.statusline_winid or 0
                             )]
                         then
                             return (
                                 vim.o.columns > 100
-                                and "   LSP ~ " .. client.name .. " "
-                            ) or "   LSP "
+                                and "   " .. client.name .. " "
+                            ) or "  "
                         end
                         ::continue::
                     end
@@ -41,7 +47,25 @@ M.ui = {
 
                 return ""
             end,
-            cursor = "%#StText#%#St_file_txt# l:%3l, c:%3c ",
+            null_ls = function()
+                for _, client in ipairs(vim.lsp.get_clients()) do
+                    if client.name == "null-ls" then
+                        return " ✨ "
+                    end
+                end
+
+                return ""
+            end,
+            copilot = function()
+                for _, client in ipairs(vim.lsp.get_clients()) do
+                    if client.name == "GitHub Copilot" then
+                        return " 🎃 "
+                    end
+                end
+
+                return ""
+            end,
+            cursor = "%#St_file_txt#%4l :%3c ",
         },
     },
 }
