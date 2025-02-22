@@ -2,6 +2,8 @@
     "diagnostics.globals": [
         "vim",
         "inlay_hint_conf_gen",
-        "default_lsp_config_merger"
+        "default_lsp_config_merger",
+        "deepMerge",
+        "deepCopy"
     ]
 }

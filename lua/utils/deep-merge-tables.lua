@@ -1,4 +1,4 @@
-return function (t1, t2)
+deepMerge = function (t1, t2)
     for k, v in pairs (t2) do
         if type (v) == "table" and type (t1[k]) == "table" then
             deepMerge (t1[k], v)

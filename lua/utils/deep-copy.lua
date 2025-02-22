@@ -1,4 +1,4 @@
-return function (original)
+deepCopy = function (original)
     local copy = {}
     for key, value in pairs (original) do
         if type (value) == "table" then
@@ -9,3 +9,5 @@ return function (original)
     end
     return copy
 end
+
+return deepCopy
