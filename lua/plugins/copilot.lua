@@ -1,5 +1,7 @@
 return {
     "github/copilot.vim",
-    lazy = false,
-    configs = function() end,
+    lazy = true,
+    configs = function()
+        vim.call("copilot#Enable")
+    end,
 }
