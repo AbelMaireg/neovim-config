@@ -2,7 +2,10 @@ local lspconfig = require ("lspconfig")
 lsp_default_config_merger = require ("utils.lsp-default-config-merger")
 
 local servers = {
-    { name = "volar" },
+    {
+        name = "volar",
+        priority = 2,
+    },
     { name = "html" },
     { name = "cssls" },
     { name = "somesass_ls" },
@@ -10,6 +13,7 @@ local servers = {
     {
         name = "ts_ls",
         setup = require ("configs.lsp.ts_ls"),
+        priority = 1,
     },
     { name = "bashls" },
     {
@@ -27,6 +31,10 @@ local servers = {
     { name = "zls" },
     { name = "gopls" },
 }
+
+table.sort (servers, function (a, b)
+    return (a.priority or 0) > (b.priority or 0)
+end)
 
 for _, lsp in ipairs (servers) do
     dofile (vim.g.base46_cache .. "lsp")
