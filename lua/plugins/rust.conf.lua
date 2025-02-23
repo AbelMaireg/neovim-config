@@ -20,6 +20,9 @@ return {
                     ),
                 },
             }
+
+            require ("mappings.vim-lsp")
+            require ("mappings.vim-diagonistics")
         end,
     },
 
