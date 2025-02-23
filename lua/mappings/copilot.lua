@@ -1,28 +1,37 @@
 local map = vim.keymap.set
 
-vim.g.copilot_no_tab_map = true
-vim.g.copilot_filetypes = {
-    "lua",
-    "javascript",
-    "typescript",
-    "rust",
-    "c",
-    "cpp",
-    "java",
-    "html",
-    "css",
-    "sass",
-    "scss",
-    "markdown",
-}
+map ("i", "<C-J>", 'copilot#Accept("\\<CR>")', {
+    expr = true,
+    replace_keycodes = false,
+    desc = "Accept the current completion item",
+})
 
-map ("i", "<M-a>", 'copilot#Accept("\\<CR>")')
+map ("i", "<C-R>", "<Plug>(copilot-dismiss)", {
+    expr = false,
+    replace_keycodes = false,
+    desc = "Dismiss the current completion item",
+})
 
-map ("i", "<M-r>", "<Plug>(copilot-dismiss)")
+map ("i", "<C-K>", "<Plug>(copilot-previous)", {
+    expr = false,
+    replace_keycodes = false,
+    desc = "Go to the previous completion item",
+})
 
-map ("i", "<M-k>", "<Plug>(copilot-previous)")
-map ("i", "<M-j>", "<Plug>(copilot-next)")
+map ("i", "<C-J>", "<Plug>(copilot-next)", {
+    expr = false,
+    replace_keycodes = false,
+    desc = "Go to the next completion item",
+})
 
-map ("i", "<M-l>", "<Plug>(copilot-accept-word)")
+map ("i", "<C-L>", "<Plug>(copilot-accept-word)", {
+    expr = false,
+    replace_keycodes = false,
+    desc = "Accept the current completion item and move to the next word",
+})
 
-map ("i", "<M-o>", "<Plug>(copilot-accept-line)")
+map ("i", "<C-O>", "<Plug>(copilot-accept-line)", {
+    expr = false,
+    replace_keycodes = false,
+    desc = "Accept the current completion item and move to the next line",
+})

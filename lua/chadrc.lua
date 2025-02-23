@@ -32,14 +32,12 @@ M.ui = {
                             goto continue
                         end
                         if
-                            client.attached_buffers[vim.api.nvim_win_get_buf (
-                                vim.g.statusline_winid or 0
-                            )]
+                            client.attached_buffers[vim.api.nvim_win_get_buf (0)]
                         then
                             return (
                                 vim.o.columns > 100
                                 and "   " .. client.name .. " "
-                            ) or "  "
+                            ) or "   "
                         end
                         ::continue::
                     end
@@ -59,7 +57,7 @@ M.ui = {
             copilot = function ()
                 for _, client in ipairs (vim.lsp.get_clients ()) do
                     if client.name == "GitHub Copilot" then
-                        return " 🎃 "
+                        return " 👾 "
                     end
                 end
 
