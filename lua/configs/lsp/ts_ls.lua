@@ -1,6 +1,6 @@
 inlay_hint_conf_gen = require ("utils.inlay-hint-conf-gen")
 
-local custom = {
+return {
     single_file_support = false,
     root_dir = vim.fs.root ("package.json", ".git"),
     init_options = {
@@ -37,6 +37,3 @@ local custom = {
         enabled = true,
     },
 }
-
-default_lsp_config_merger = require ("utils.lsp-default-config-merger")
-return default_lsp_config_merger (custom)

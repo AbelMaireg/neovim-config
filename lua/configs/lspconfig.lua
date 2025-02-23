@@ -1,14 +1,5 @@
 local lspconfig = require ("lspconfig")
-
-local on_attach = require ("configs.lsp.configs.on_attach")
-local on_init = require ("configs.lsp.configs.on_init")
-local capabilities = require ("configs.lsp.configs.capabilities")
-
-local default_vim_lsp_api_bindings = {
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-}
+lsp_default_config_merger = require ("utils.lsp-default-config-merger")
 
 local servers = {
     { name = "volar" },
@@ -18,12 +9,12 @@ local servers = {
     { name = "prismals" },
     {
         name = "ts_ls",
-        opts = require ("configs.lsp.ts_ls"),
+        setup = require ("configs.lsp.ts_ls"),
     },
     { name = "bashls" },
     {
         name = "lua_ls",
-        opts = require ("configs.lsp.lua"),
+        setup = require ("configs.lsp.lua"),
     },
     { name = "clangd" },
     { name = "pyright" },
@@ -40,5 +31,5 @@ local servers = {
 for _, lsp in ipairs (servers) do
     dofile (vim.g.base46_cache .. "lsp")
     require ("nvchad.lsp").diagnostic_config ()
-    lspconfig[lsp.name].setup (lsp.opts or default_vim_lsp_api_bindings)
+    lspconfig[lsp.name].setup (lsp_default_config_merger (lsp.setup))
 end

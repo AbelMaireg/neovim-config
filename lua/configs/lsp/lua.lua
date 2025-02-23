@@ -1,4 +1,4 @@
-local custom = {
+return {
     root_dir = vim.fs.root ("init.lua", ".git"),
     settings = {
         Lua = {
@@ -19,6 +19,3 @@ local custom = {
         },
     },
 }
-
-default_lsp_config_merger = require ("utils.lsp-default-config-merger")
-return default_lsp_config_merger (custom)
