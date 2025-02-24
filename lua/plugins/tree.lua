@@ -1,8 +1,9 @@
 return {
     {
         "nvim-tree/nvim-tree.lua",
+        lazy = false,
         cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-        configs = function ()
+        opts = function ()
             dofile (vim.g.base46_cache .. "nvimtree")
 
             return {
