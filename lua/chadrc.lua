@@ -1,4 +1,5 @@
-require ("utils.contains")
+require("utils.contains")
+ui_utils = require("utils.ui")
 
 ---@type ChadrcConfig
 local M = {}
@@ -9,30 +10,41 @@ M.ui = {
         separator_style = "default",
         order = {
             "mode",
+            "cwd",
             "file",
             "git",
             "%=",
-            "lsp_msg",
             "%=",
+            "lsp_msg",
             "diagnostics",
             "lsp",
             "copilot",
             "null_ls",
-            "cwd",
             "cursor",
             "lines",
         },
         modules = {
-            lsp = function ()
+            -- git = function()
+            --     local data = ui_utils.git()
+            --     return "%#St_InsertModeSep# "
+            --         .. data[1]
+            --         .. " %#St_TerminalmodeSep#"
+            --         .. data[2]
+            --         .. " %#St_NTerminalmodeSep#"
+            --         .. data[3]
+            --         .. " %#St_file_sep#"
+            --         .. data[4]
+            -- end,
+            lsp = function()
                 local exo = { "null-ls", "GitHub Copilot" }
 
-                if rawget (vim, "lsp") then
-                    for _, client in ipairs (vim.lsp.get_clients ()) do
-                        if contains (exo, client.name) then
+                if rawget(vim, "lsp") then
+                    for _, client in ipairs(vim.lsp.get_clients()) do
+                        if contains(exo, client.name) then
                             goto continue
                         end
                         if
-                            client.attached_buffers[vim.api.nvim_win_get_buf (0)]
+                            client.attached_buffers[vim.api.nvim_win_get_buf(0)]
                         then
                             return (
                                 vim.o.columns > 100
@@ -45,8 +57,8 @@ M.ui = {
 
                 return ""
             end,
-            null_ls = function ()
-                for _, client in ipairs (vim.lsp.get_clients ()) do
+            null_ls = function()
+                for _, client in ipairs(vim.lsp.get_clients()) do
                     if client.name == "null-ls" then
                         return "✨ "
                     end
@@ -54,8 +66,8 @@ M.ui = {
 
                 return ""
             end,
-            copilot = function ()
-                for _, client in ipairs (vim.lsp.get_clients ()) do
+            copilot = function()
+                for _, client in ipairs(vim.lsp.get_clients()) do
                     if client.name == "GitHub Copilot" then
                         return "👾 "
                     end
@@ -64,9 +76,9 @@ M.ui = {
                 return ""
             end,
             cursor = "%#St_file_txt#%4l :%3c ",
-            lines = function ()
+            lines = function()
                 return "%#St_File_bg# "
-                    .. vim.api.nvim_buf_line_count (0)
+                    .. vim.api.nvim_buf_line_count(0)
                     .. " "
             end,
         },
