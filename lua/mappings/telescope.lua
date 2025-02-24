@@ -85,3 +85,10 @@ map (
     "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
     { desc = "telescope find all files" }
 )
+
+map (
+    "n",
+    "<leader>fr",
+    telescope_builtin.registers,
+    { desc = "telescope registers" }
+)
