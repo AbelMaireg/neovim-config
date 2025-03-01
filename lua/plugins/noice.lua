@@ -3,9 +3,9 @@ return {
     event = "VeryLazy",
     opts = {
         cmdline = {
-            enabled = true,         -- enables the Noice cmdline UI
+            enabled = true, -- enables the Noice cmdline UI
             view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-            opts = {},              -- global options for the cmdline. See section on views
+            opts = {}, -- global options for the cmdline. See section on views
             ---@type table<string, CmdlineFormat>
             format = {
                 -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
@@ -40,15 +40,15 @@ return {
         messages = {
             -- NOTE: If you enable messages, then the cmdline is enabled automatically.
             -- This is a current Neovim limitation.
-            enabled = true,              -- enables the Noice messages UI
-            view = "notify",             -- default view for messages
-            view_error = "notify",       -- view for errors
-            view_warn = "notify",        -- view for warnings
-            view_history = "messages",   -- view for :messages
+            enabled = true, -- enables the Noice messages UI
+            view = "notify", -- default view for messages
+            view_error = "notify", -- view for errors
+            view_warn = "notify", -- view for warnings
+            view_history = "messages", -- view for :messages
             view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
         },
         popupmenu = {
-            enabled = true,  -- enables the Noice popupmenu UI
+            enabled = true, -- enables the Noice popupmenu UI
             ---@type 'nui'|'cmp'
             backend = "nui", -- backend to use to show regular cmdline completions
             ---@type NoicePopupmenuItemKind|false
@@ -75,7 +75,7 @@ return {
                         { error = true },
                         { warning = true },
                         { event = "msg_show", kind = { "" } },
-                        { event = "lsp",      kind = "message" },
+                        { event = "lsp", kind = "message" },
                     },
                 },
             },
@@ -89,7 +89,7 @@ return {
                         { error = true },
                         { warning = true },
                         { event = "msg_show", kind = { "" } },
-                        { event = "lsp",      kind = "message" },
+                        { event = "lsp", kind = "message" },
                     },
                 },
                 filter_opts = { count = 1 },
@@ -139,27 +139,27 @@ return {
                 ["cmp.entry.get_documentation"] = false,
             },
             hover = {
-                enabled = true,
+                enabled = false,
                 silent = false, -- set to true to not show a message if hover is not available
-                view = nil,     -- when nil, use defaults from documentation
+                view = nil, -- when nil, use defaults from documentation
                 ---@type NoiceViewOptions
-                opts = {},      -- merged with defaults from documentation
+                opts = {}, -- merged with defaults from documentation
             },
             signature = {
-                enabled = true,
+                enabled = false,
                 auto_open = {
                     enabled = true,
                     trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
                     luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
-                    throttle = 50,  -- Debounce lsp signature help request by 50ms
+                    throttle = 50, -- Debounce lsp signature help request by 50ms
                 },
-                view = nil,         -- when nil, use defaults from documentation
+                view = nil, -- when nil, use defaults from documentation
                 ---@type NoiceViewOptions
-                opts = {},          -- merged with defaults from documentation
+                opts = {}, -- merged with defaults from documentation
             },
             message = {
                 -- Messages shown by lsp servers
-                enabled = true,
+                enabled = false,
                 view = "notify",
                 opts = {},
             },
@@ -178,8 +178,8 @@ return {
         },
         markdown = {
             hover = {
-                ["|(%S-)|"] = vim.cmd.help,                        -- vim help links
-                ["%[.-%]%((%S-)%)"] = require("noice.util").open,  -- markdown links
+                ["|(%S-)|"] = vim.cmd.help, -- vim help links
+                ["%[.-%]%((%S-)%)"] = require ("noice.util").open, -- markdown links
             },
             highlights = {
                 ["|%S-|"] = "@text.reference",
@@ -197,13 +197,13 @@ return {
         presets = {
             -- you can enable a preset by setting it to true, or a table that will override the preset config
             -- you can also add custom presets that you can enable/disable with enabled=true
-            bottom_search = false,         -- use a classic bottom cmdline for search
-            command_palette = false,       -- position the cmdline and popupmenu together
+            bottom_search = false, -- use a classic bottom cmdline for search
+            command_palette = false, -- position the cmdline and popupmenu together
             long_message_to_split = false, -- long messages will be sent to a split
-            inc_rename = false,            -- enables an input dialog for inc-rename.nvim
-            lsp_doc_border = false,        -- add a border to hover docs and signature help
+            inc_rename = false, -- enables an input dialog for inc-rename.nvim
+            lsp_doc_border = false, -- add a border to hover docs and signature help
         },
-        throttle = 1000 / 30,              -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
+        throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
         ---@type NoiceConfigViews
         views = {}, ---@see section on views
         ---@type NoiceRouteConfig[]
@@ -221,51 +221,51 @@ return {
         },
         {
             "<S-Enter>",
-            function()
-                require("noice").redirect(vim.fn.getcmdline())
+            function ()
+                require ("noice").redirect (vim.fn.getcmdline ())
             end,
             mode = "c",
             desc = "Redirect Cmdline",
         },
         {
             "<leader>snl",
-            function()
-                require("noice").cmd("last")
+            function ()
+                require ("noice").cmd ("last")
             end,
             desc = "Noice Last Message",
         },
         {
             "<leader>snh",
-            function()
-                require("noice").cmd("history")
+            function ()
+                require ("noice").cmd ("history")
             end,
             desc = "Noice History",
         },
         {
             "<leader>sna",
-            function()
-                require("noice").cmd("all")
+            function ()
+                require ("noice").cmd ("all")
             end,
             desc = "Noice All",
         },
         {
             "<leader>snd",
-            function()
-                require("noice").cmd("dismiss")
+            function ()
+                require ("noice").cmd ("dismiss")
             end,
             desc = "Dismiss All",
         },
         {
             "<leader>snt",
-            function()
-                require("noice").cmd("pick")
+            function ()
+                require ("noice").cmd ("pick")
             end,
             desc = "Noice Picker (Telescope/FzfLua)",
         },
         {
             "<c-f>",
-            function()
-                if not require("noice.lsp").scroll(4) then
+            function ()
+                if not require ("noice.lsp").scroll (4) then
                     return "<c-f>"
                 end
             end,
@@ -276,8 +276,8 @@ return {
         },
         {
             "<c-b>",
-            function()
-                if not require("noice.lsp").scroll(-4) then
+            function ()
+                if not require ("noice.lsp").scroll (-4) then
                     return "<c-b>"
                 end
             end,
@@ -287,13 +287,13 @@ return {
             mode = { "i", "n", "s" },
         },
     },
-    config = function(_, opts)
+    config = function (_, opts)
         -- HACK: noice shows messages from before it was enabled,
         -- but this is not ideal when Lazy is installing plugins,
         -- so clear the messages in this case.
         if vim.o.filetype == "lazy" then
-            vim.cmd([[messages clear]])
+            vim.cmd ([[messages clear]])
         end
-        require("noice").setup(opts)
+        require ("noice").setup (opts)
     end,
 }
