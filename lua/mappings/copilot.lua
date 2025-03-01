@@ -8,35 +8,35 @@ map ("i", "<C-A>", 'copilot#Accept("\\<CR>")', {
 })
 
 -- D dismiss
-map ("i", "<C-D>", "<Plug>(copilot-dismiss)", {
+map ("i", "<M-D>", "<Plug>(copilot-dismiss)", {
     expr = false,
     replace_keycodes = false,
     desc = "Dismiss the current completion item",
 })
 
 -- P goto previous
-map ("i", "<C-P>", "<Plug>(copilot-previous)", {
+map ("i", "<M-P>", "<Plug>(copilot-previous)", {
     expr = false,
     replace_keycodes = false,
     desc = "Go to the previous completion item",
 })
 
 -- N goto next
-map ("i", "<C-N>", "<Plug>(copilot-next)", {
+map ("i", "<M-N>", "<Plug>(copilot-next)", {
     expr = false,
     replace_keycodes = false,
     desc = "Go to the next completion item",
 })
 
 -- W accept word
-map ("i", "<C-W>", "<Plug>(copilot-accept-word)", {
+map ("i", "<M-W>", "<Plug>(copilot-accept-word)", {
     expr = false,
     replace_keycodes = false,
     desc = "Accept the current completion item and move to the next word",
 })
 
 -- L accept line
-map ("i", "<C-L>", "<Plug>(copilot-accept-line)", {
+map ("i", "<M-L>", "<Plug>(copilot-accept-line)", {
     expr = false,
     replace_keycodes = false,
     desc = "Accept the current completion item and move to the next line",
