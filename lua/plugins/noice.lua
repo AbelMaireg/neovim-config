@@ -5,7 +5,12 @@ return {
         cmdline = {
             enabled = true, -- enables the Noice cmdline UI
             view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-            opts = {}, -- global options for the cmdline. See section on views
+            opts = {
+                position = {
+                    row = "90%",
+                    col = "50%",
+                },
+            }, -- global options for the cmdline. See section on views
             ---@type table<string, CmdlineFormat>
             format = {
                 -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.
@@ -139,11 +144,16 @@ return {
                 ["cmp.entry.get_documentation"] = false,
             },
             hover = {
-                enabled = false,
+                enabled = true,
                 silent = false, -- set to true to not show a message if hover is not available
                 view = nil, -- when nil, use defaults from documentation
                 ---@type NoiceViewOptions
-                opts = {}, -- merged with defaults from documentation
+                opts = {
+                    border = {
+                        style = "rounded",
+                        padding = { 0, 2 },
+                    },
+                }, -- merged with defaults from documentation
             },
             signature = {
                 enabled = false,

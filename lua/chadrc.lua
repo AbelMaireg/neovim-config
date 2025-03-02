@@ -86,7 +86,7 @@ M.ui = {
 }
 
 M.base46 = {
-    theme = "onedark",
+    theme = "rosepine",
     transparency = false,
 
     hl_override = {
