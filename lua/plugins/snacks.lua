@@ -8,7 +8,7 @@ return {
         priority = 1000,
         lazy = false,
         opts = {
-            bigfile = { enabled = false },
+            bigfile = { enabled = true },
             dashboard = {
                 enabled = true,
                 preset = {
@@ -18,10 +18,10 @@ return {
             explorer = { enabled = false },
             gitbrowse = { enabled = false },
             indent = { enabled = false },
-            input = { enabled = false },
-            picker = { enabled = false },
+            input = { enabled = true },
+            picker = { enabled = true },
             notifier = { enabled = false },
-            quickfile = { enabled = false },
+            quickfile = { enabled = true },
             scope = {
                 enabled = true,
                 keys = {
@@ -59,7 +59,7 @@ return {
                     "for_statement",
                 },
             },
-            scroll = { enabled = false },
+            scroll = { enabled = true },
             statuscolumn = { enabled = false },
             words = { enabled = true },
         },
