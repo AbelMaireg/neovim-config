@@ -52,6 +52,7 @@ return {
                 "php",
                 "prisma",
                 "python",
+                "regex",
                 "ruby",
                 "rust",
                 "scala",

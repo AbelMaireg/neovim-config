@@ -17,7 +17,7 @@ return {
             },
             explorer = { enabled = false },
             gitbrowse = { enabled = false },
-            indent = { enabled = false },
+            indent = { enabled = true },
             input = { enabled = true },
             picker = { enabled = true },
             notifier = { enabled = false },
