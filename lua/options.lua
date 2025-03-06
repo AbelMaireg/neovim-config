@@ -68,8 +68,8 @@ vim.env.PATH = table.concat ({ vim.fn.stdpath ("data"), "mason", "bin" }, sep)
 -- visuals
 opt.cursorline = true
 opt.cursorlineopt = "both"
-api.nvim_set_hl (0, "CursorLine", { bg = "#202020" })
-api.nvim_set_hl (0, "Visual", { bg = "#505050", underline = true })
+-- api.nvim_set_hl (0, "CursorLine", { bg = "#202020" })
+-- api.nvim_set_hl (0, "Visual", { bg = "#505050", underline = true })
 api.nvim_set_hl (0, "LspReferenceRead", { ctermbg = "LightYellow" })
 api.nvim_set_hl (0, "LspReferenceText", { ctermbg = "LightBlue" })
 api.nvim_set_hl (0, "LspReferenceWrite", { ctermbg = "LightGreen" })
