@@ -1,10 +1,5 @@
--- require("nvchad.options")
-
-local api = vim.api
-local opt = vim.opt
 local create_autocmd = vim.api.nvim_create_autocmd
-
--- NVCHAD --
+local opt = vim.opt
 local o = vim.o
 local g = vim.g
 
@@ -12,13 +7,22 @@ local g = vim.g
 o.laststatus = 3
 o.showmode = false
 
-o.clipboard = "unnamedplus"
+o.clipboard = "unnamed"
 o.cursorline = true
-o.cursorlineopt = "number"
+o.cursorlineopt = "both"
+o.scrolloff = 10
+vim.lsp.inlay_hint.enable (true)
+
+-- folds
+o.foldmethod = "indent"
+o.foldenable = true
+o.foldlevel = 99
+o.foldnestmax = 10
+o.foldlevelstart = 99
 
 -- Indenting
 o.expandtab = true
-o.shiftwidth = 2
+o.shiftwidth = 4
 o.smartindent = true
 o.tabstop = 2
 o.softtabstop = 2
@@ -30,8 +34,9 @@ o.mouse = "a"
 
 -- Numbers
 o.number = true
+o.relativenumber = true
 o.numberwidth = 2
-o.ruler = false
+o.ruler = true
 
 -- disable nvim intro
 opt.shortmess:append ("sI")
@@ -42,11 +47,11 @@ o.splitright = true
 o.timeoutlen = 400
 o.undofile = true
 
--- interval for writing swap file to disk, also used by gitsigns
+o.swapfile = false
+o.backup = false
+o.writebackup = false
 o.updatetime = 250
 
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
 opt.whichwrap:append ("<>[]hl")
 
 -- disable some default providers
@@ -66,31 +71,6 @@ vim.env.PATH = table.concat ({ vim.fn.stdpath ("data"), "mason", "bin" }, sep)
 -- CUSTOM --
 
 -- visuals
-opt.cursorline = true
-opt.cursorlineopt = "both"
--- api.nvim_set_hl (0, "CursorLine", { bg = "#202020" })
--- api.nvim_set_hl (0, "Visual", { bg = "#505050", underline = true })
-api.nvim_set_hl (0, "LspReferenceRead", { ctermbg = "LightYellow" })
-api.nvim_set_hl (0, "LspReferenceText", { ctermbg = "LightBlue" })
-api.nvim_set_hl (0, "LspReferenceWrite", { ctermbg = "LightGreen" })
-opt.scrolloff = 10
-opt.relativenumber = true
-
-opt.foldmethod = "indent"
-opt.foldenable = true
-opt.foldlevel = 99
-opt.foldnestmax = 10
-opt.foldlevelstart = 99
-
-opt.clipboard = "unnamed"
-
-opt.shiftwidth = 4
-
-opt.swapfile = false
-opt.backup = false
-opt.writebackup = false
-
-vim.lsp.inlay_hint.enable (true)
 require ("barbecue.ui").toggle (true)
 
 create_autocmd ("TextYankPost", {

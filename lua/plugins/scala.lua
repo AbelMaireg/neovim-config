@@ -9,9 +9,9 @@ return {
             },
             {
                 "mfussenegger/nvim-dap",
-                config = function(self, opts)
+                config = function (self, opts)
                     -- Debug settings if you're using nvim-dap
-                    local dap = require("dap")
+                    local dap = require ("dap")
 
                     dap.configurations.scala = {
                         {
@@ -36,8 +36,8 @@ return {
             },
         },
         ft = { "scala", "sbt", "java" },
-        opts = function()
-            local metals_config = require("metals").bare_config()
+        opts = function ()
+            local metals_config = require ("metals").bare_config ()
 
             -- Example of settings
             metals_config.settings = {
@@ -61,22 +61,22 @@ return {
 
             -- Example if you are using cmp how to make sure the correct capabilities for snippets are set
             metals_config.capabilities =
-                require("cmp_nvim_lsp").default_capabilities()
+                require ("cmp_nvim_lsp").default_capabilities ()
 
-            metals_config.on_attach = function(client, bufnr)
-                require("mappings.vim-lsp")
-                require("mappings.vim-diagonistics")
+            metals_config.on_attach = function (client, bufnr)
+                require ("mappings.vim-lsp")
+                require ("mappings.vim-diagonistics")
             end
 
             return metals_config
         end,
-        config = function(self, metals_config)
+        config = function (self, metals_config)
             local nvim_metals_group =
-                vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-            vim.api.nvim_create_autocmd("FileType", {
+                vim.api.nvim_create_augroup ("nvim-metals", { clear = true })
+            vim.api.nvim_create_autocmd ("FileType", {
                 pattern = self.ft,
-                callback = function()
-                    require("metals").initialize_or_attach(metals_config)
+                callback = function ()
+                    require ("metals").initialize_or_attach (metals_config)
                 end,
                 group = nvim_metals_group,
             })
