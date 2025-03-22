@@ -30,6 +30,7 @@ local servers = {
     { name = "marksman" },
     { name = "zls" },
     { name = "gopls" },
+    { name = "jdtls" },
 }
 
 table.sort (servers, function (a, b)
