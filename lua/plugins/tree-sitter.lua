@@ -55,6 +55,7 @@ return {
                 "regex",
                 "ruby",
                 "rust",
+                "scss",
                 "scala",
                 "sql",
                 "svelte",
