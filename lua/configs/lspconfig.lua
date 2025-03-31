@@ -4,37 +4,89 @@ lsp_default_config_merger = require ("utils.lsp-default-config-merger")
 local servers = {
     {
         name = "volar",
+        enable = true,
         priority = 2,
     },
-    { name = "html" },
-    { name = "cssls" },
-    { name = "somesass_ls" },
+    {
+        name = "html",
+        enable = true,
+    },
+    {
+        name = "cssls",
+        enable = true,
+    },
+    {
+        name = "somesass_ls",
+        enable = true,
+    },
     {
         name = "tailwindcss",
         setup = require ("configs.lsp.tailwind"),
+        enable = true,
     },
-    { name = "prismals" },
+    {
+        name = "prismals",
+        enable = true,
+    },
     {
         name = "ts_ls",
         setup = require ("configs.lsp.ts_ls"),
+        enable = true,
         priority = 1,
     },
-    { name = "bashls" },
+    {
+        name = "bashls",
+        enable = true,
+    },
     {
         name = "lua_ls",
         setup = require ("configs.lsp.lua"),
+        enable = true,
     },
-    { name = "clangd" },
-    { name = "pyright" },
-    { name = "cmake" },
-    { name = "dockerls" },
-    { name = "docker_compose_language_service" },
-    { name = "jsonls" },
-    { name = "yamlls" },
-    { name = "marksman" },
-    { name = "zls" },
-    { name = "gopls" },
-    { name = "jdtls" },
+    {
+        name = "clangd",
+        enable = true,
+    },
+    {
+        name = "pyright",
+        enable = true,
+    },
+    {
+        name = "cmake",
+        enable = true,
+    },
+    {
+        name = "dockerls",
+        enable = true,
+    },
+    {
+        name = "docker_compose_language_service",
+        enable = true,
+    },
+    {
+        name = "jsonls",
+        enable = true,
+    },
+    {
+        name = "yamlls",
+        enable = true,
+    },
+    {
+        name = "marksman",
+        enable = true,
+    },
+    {
+        name = "zls",
+        enable = true,
+    },
+    {
+        name = "gopls",
+        enable = true,
+    },
+    {
+        name = "jdtls",
+        enable = true,
+    },
 }
 
 table.sort (servers, function (a, b)
@@ -42,7 +94,13 @@ table.sort (servers, function (a, b)
 end)
 
 for _, lsp in ipairs (servers) do
+    if lsp.enable == false then
+        goto continue
+    end
+
     dofile (vim.g.base46_cache .. "lsp")
     require ("nvchad.lsp").diagnostic_config ()
     lspconfig[lsp.name].setup (lsp_default_config_merger (lsp.setup))
+
+    ::continue::
 end
