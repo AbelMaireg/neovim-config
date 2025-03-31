@@ -14,6 +14,7 @@ return {
                 languages = { "vue" },
             },
         },
+        hybridMode = false,
     },
     filetypes = {
         "typescript",
