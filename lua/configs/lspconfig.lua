@@ -9,6 +9,10 @@ local servers = {
     { name = "html" },
     { name = "cssls" },
     { name = "somesass_ls" },
+    {
+        name = "tailwindcss",
+        setup = require ("configs.lsp.tailwind"),
+    },
     { name = "prismals" },
     {
         name = "ts_ls",
