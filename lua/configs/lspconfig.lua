@@ -39,6 +39,10 @@ local servers = {
         enable = true,
     },
     {
+        name = "shfmt",
+        enable = true,
+    },
+    {
         name = "lua_ls",
         setup = require ("configs.lsp.lua"),
         enable = true,
@@ -72,6 +76,14 @@ local servers = {
         enable = true,
     },
     {
+        name = "yamlfmt",
+        enable = true,
+    },
+    {
+        name = "yamllint",
+        enable = true,
+    },
+    {
         name = "marksman",
         enable = true,
     },
@@ -87,6 +99,26 @@ local servers = {
         name = "jdtls",
         enable = true,
     },
+    {
+        name = "gradle_ls",
+        enable = true,
+    },
+    {
+        name = "groovyls",
+        enable = true,
+    },
+    {
+        name = "kotlin_language_server",
+        enable = false,
+    },
+    {
+        name = "sqls",
+        enable = true,
+    },
+    {
+        name = "sql_formatter",
+        enable = true,
+    },
 }
 
 table.sort (servers, function (a, b)
@@ -94,13 +126,9 @@ table.sort (servers, function (a, b)
 end)
 
 for _, lsp in ipairs (servers) do
-    if lsp.enable == false then
-        goto continue
+    if lsp.enable == true then
+        dofile (vim.g.base46_cache .. "lsp")
+        require ("nvchad.lsp").diagnostic_config ()
+        lspconfig[lsp.name].setup (lsp_default_config_merger (lsp.setup))
     end
-
-    dofile (vim.g.base46_cache .. "lsp")
-    require ("nvchad.lsp").diagnostic_config ()
-    lspconfig[lsp.name].setup (lsp_default_config_merger (lsp.setup))
-
-    ::continue::
 end
