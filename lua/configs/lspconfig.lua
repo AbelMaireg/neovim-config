@@ -39,10 +39,6 @@ local servers = {
         enable = true,
     },
     {
-        name = "shfmt",
-        enable = true,
-    },
-    {
         name = "lua_ls",
         setup = require ("configs.lsp.lua"),
         enable = true,
@@ -76,14 +72,6 @@ local servers = {
         enable = true,
     },
     {
-        name = "yamlfmt",
-        enable = true,
-    },
-    {
-        name = "yamllint",
-        enable = true,
-    },
-    {
         name = "marksman",
         enable = true,
     },
@@ -113,10 +101,6 @@ local servers = {
     },
     {
         name = "sqls",
-        enable = true,
-    },
-    {
-        name = "sql_formatter",
         enable = true,
     },
 }

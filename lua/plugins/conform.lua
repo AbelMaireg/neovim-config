@@ -29,6 +29,10 @@ return {
                     java = {
                         "google-java-format",
                     },
+                    kotlin = {
+                        "ktfmt",
+                        -- "ktlint",
+                    },
                     bash = {
                         "shfmt",
                     },
@@ -37,6 +41,7 @@ return {
                     },
                     yaml = {
                         "yamlfmt",
+                        "yamllint",
                     },
                     zig = {
                         "zls",
