@@ -51,6 +51,12 @@ return {
         dart = {
             "dart_format",
         },
+        toml = {
+            "taplo",
+        },
+        xml = {
+            "xmlformatter",
+        },
     },
     format_on_save = {
         timeout_ms = 1000,
