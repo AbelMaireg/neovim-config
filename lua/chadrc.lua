@@ -19,7 +19,6 @@ M.ui = {
             "diagnostics",
             "lsp",
             "copilot",
-            "null_ls",
             "cursor",
             "lines",
         },
@@ -36,11 +35,11 @@ M.ui = {
             --         .. data[4]
             -- end,
             lsp = function ()
-                local exo = { "null-ls", "GitHub Copilot" }
+                local exclude = { "GitHub Copilot" }
 
                 if rawget (vim, "lsp") then
                     for _, client in ipairs (vim.lsp.get_clients ()) do
-                        if contains (exo, client.name) then
+                        if contains (exclude, client.name) then
                             goto continue
                         end
                         if
@@ -52,15 +51,6 @@ M.ui = {
                             ) or "   "
                         end
                         ::continue::
-                    end
-                end
-
-                return ""
-            end,
-            null_ls = function ()
-                for _, client in ipairs (vim.lsp.get_clients ()) do
-                    if client.name == "null-ls" then
-                        return "✨ "
                     end
                 end
 
