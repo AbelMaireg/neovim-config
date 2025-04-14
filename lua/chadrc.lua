@@ -24,17 +24,9 @@ M.ui = {
             "lines",
         },
         modules = {
-            -- git = function()
-            --     local data = ui_utils.git()
-            --     return "%#St_InsertModeSep# "
-            --         .. data[1]
-            --         .. " %#St_TerminalmodeSep#"
-            --         .. data[2]
-            --         .. " %#St_NTerminalmodeSep#"
-            --         .. data[3]
-            --         .. " %#St_file_sep#"
-            --         .. data[4]
-            -- end,
+            git = function ()
+                return "%#St_gitIcons#" .. require ("nvchad.stl.utils").git ()
+            end,
             lsp = function ()
                 local exclude = { "GitHub Copilot" }
 
@@ -49,7 +41,7 @@ M.ui = {
                             return (
                                 vim.o.columns > 100
                                 and "   " .. client.name .. " "
-                            ) or "   "
+                            ) or "  "
                         end
                         ::continue::
                     end
@@ -60,7 +52,7 @@ M.ui = {
             copilot = function ()
                 for _, client in ipairs (vim.lsp.get_clients ()) do
                     if client.name == "GitHub Copilot" then
-                        return "👾 "
+                        return " 👾 "
                     end
                 end
 
@@ -74,9 +66,9 @@ M.ui = {
             end,
             macro_recording = function ()
                 if vim.fn.reg_recording () ~= "" then
-                    return "%#St_NTerminalModeSep# "
-                        .. "⏺ :"
-                        .. "%#St_NTerminalMode# "
+                    return "%#St_file_bg# "
+                        .. "REC "
+                        .. "%#St_file_txt# "
                         .. vim.fn.reg_recording ()
                         .. " "
                 end
