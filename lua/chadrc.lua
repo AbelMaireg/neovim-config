@@ -15,6 +15,7 @@ M.ui = {
             "git",
             "%=",
             "%=",
+            "macro_recording",
             "lsp_msg",
             "diagnostics",
             "lsp",
@@ -70,6 +71,16 @@ M.ui = {
                 return "%#St_File_bg# "
                     .. vim.api.nvim_buf_line_count (0)
                     .. " "
+            end,
+            macro_recording = function ()
+                if vim.fn.reg_recording () ~= "" then
+                    return "%#St_NTerminalModeSep# "
+                        .. "⏺ :"
+                        .. "%#St_NTerminalMode# "
+                        .. vim.fn.reg_recording ()
+                        .. " "
+                end
+                return ""
             end,
         },
     },
