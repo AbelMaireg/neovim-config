@@ -79,9 +79,9 @@ M.ui = {
 }
 
 M.base46 = {
-    theme = "rosepine",
+    theme = "tokyonight",
     transparency = false,
-    theme_toggle = { "rosepine", "vscode_light" },
+    theme_toggle = { "tokyonight", "radium" },
 
     hl_override = {
         ["@comment"] = { fg = "#afafaf", italic = true },

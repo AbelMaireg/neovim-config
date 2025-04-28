@@ -9,9 +9,10 @@ return {
             stop_after_first = true,
         },
         typescript = {
-            "eslint_d",
-            "prettierd",
             "prettier",
+            "prettierd",
+            "standardjs",
+            "eslint_d",
             "oxlint",
             stop_after_first = true,
         },

@@ -2,7 +2,7 @@ inlay_hint_conf_gen = require ("utils.inlay-hint-conf-gen")
 
 return {
     single_file_support = false,
-    root_dir = vim.fs.root ("package.json", ".git"),
+    root_dir = vim.fs.root (0, ".git"),
     init_options = {
         plugins = {
             {

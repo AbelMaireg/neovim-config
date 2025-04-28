@@ -35,6 +35,12 @@ local servers = {
         priority = 1,
     },
     {
+        name = "denols",
+        setup = require ("configs.lsp.denols"),
+        enable = false,
+        priority = 1,
+    },
+    {
         name = "bashls",
         enable = true,
     },
