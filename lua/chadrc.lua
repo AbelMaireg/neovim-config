@@ -79,7 +79,7 @@ M.ui = {
 }
 
 M.base46 = {
-    theme = "tokyonight",
+    theme = "radium",
     transparency = false,
     theme_toggle = { "tokyonight", "radium" },
 
