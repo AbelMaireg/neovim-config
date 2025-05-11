@@ -31,13 +31,13 @@ local servers = {
     {
         name = "ts_ls",
         setup = require ("configs.lsp.ts_ls"),
-        enable = false,
+        enable = true,
         priority = 1,
     },
     {
         name = "denols",
         setup = require ("configs.lsp.denols"),
-        enable = true,
+        enable = false,
         priority = 1,
     },
     {
@@ -73,10 +73,10 @@ local servers = {
         name = "jsonls",
         enable = true,
     },
-    {
-        name = "yamlls",
-        enable = true,
-    },
+    -- {
+    --     name = "yamlls",
+    --     enable = true,
+    -- },
     {
         name = "marksman",
         enable = true,
