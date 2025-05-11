@@ -1,12 +1,35 @@
 return {
     formatters_by_ft = {
-        lua = { "stylua" },
+        bash = {
+            "shfmt",
+        },
+        docker = {
+            "dockerls",
+        },
+        dart = {
+            "dart_format",
+        },
+        fish = {
+            "shfmt",
+        },
+        java = {
+            "google-java-format",
+        },
         javascript = {
             "eslint_d",
             "prettierd",
             "prettier",
             "oxlint",
             stop_after_first = true,
+        },
+        kotlin = {
+            "ktfmt",
+            "ktlint",
+            stop_after_first = true,
+        },
+        lua = { "stylua" },
+        makefile = {
+            "checkmate",
         },
         typescript = {
             "prettier",
@@ -16,6 +39,12 @@ return {
             "oxlint",
             stop_after_first = true,
         },
+        sql = {
+            "sql_formatter",
+        },
+        toml = {
+            "taplo",
+        },
         vue = {
             "eslint_d",
             "prettierd",
@@ -23,18 +52,8 @@ return {
             "oxlint",
             stop_after_first = true,
         },
-        java = {
-            "google-java-format",
-        },
-        kotlin = {
-            "ktfmt",
-            -- "ktlint",
-        },
-        bash = {
-            "shfmt",
-        },
-        fish = {
-            "shfmt",
+        xml = {
+            "xmlformatter",
         },
         yaml = {
             "yamlfmt",
@@ -42,21 +61,6 @@ return {
         },
         zig = {
             "zls",
-        },
-        docker = {
-            "dockerls",
-        },
-        sql = {
-            "sql_formatter",
-        },
-        dart = {
-            "dart_format",
-        },
-        toml = {
-            "taplo",
-        },
-        xml = {
-            "xmlformatter",
         },
     },
     format_on_save = {
