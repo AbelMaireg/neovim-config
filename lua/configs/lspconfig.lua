@@ -78,6 +78,10 @@ local servers = {
     --     enable = true,
     -- },
     {
+        name = "taplo",
+        enable = true,
+    },
+    {
         name = "marksman",
         enable = true,
     },
