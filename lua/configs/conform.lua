@@ -31,6 +31,9 @@ return {
         makefile = {
             "checkmate",
         },
+        python = {
+            "pyink",
+        },
         typescript = {
             "prettier",
             "prettierd",
@@ -58,6 +61,7 @@ return {
         yaml = {
             "yamlfmt",
             "yamllint",
+            stop_after_first = true,
         },
         zig = {
             "zls",
