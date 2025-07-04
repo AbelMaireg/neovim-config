@@ -24,15 +24,12 @@ return {
         "vue",
     },
     settings = {
-        javascript = {
-            inlayHints = inlay_hint_conf_gen (),
-        },
-        typescript = {
-            inlayHints = inlay_hint_conf_gen (),
-        },
-        vue = {
-            inlayHints = inlay_hint_conf_gen (),
-        },
+        -- javascript = {
+        --     inlayHints = inlay_hint_conf_gen (),
+        -- },
+        -- typescript = {
+        --     inlayHints = inlay_hint_conf_gen (),
+        -- },
     },
     inlay_hints = {
         enabled = true,

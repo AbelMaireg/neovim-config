@@ -22,7 +22,7 @@ o.foldlevelstart = 99
 
 -- Indenting
 o.expandtab = true
-o.shiftwidth = 4
+o.shiftwidth = 2
 o.smartindent = true
 o.tabstop = 2
 o.softtabstop = 2
