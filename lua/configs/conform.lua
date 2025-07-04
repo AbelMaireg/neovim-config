@@ -31,6 +31,9 @@ return {
         makefile = {
             "checkmate",
         },
+        nginx = {
+            "nginx_config_formatter",
+        },
         python = {
             "pyink",
         },

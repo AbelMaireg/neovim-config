@@ -113,6 +113,10 @@ local servers = {
         name = "sqls",
         enable = true,
     },
+    {
+        name = "nginx_language_server",
+        enable = true,
+    },
 }
 
 table.sort (servers, function (a, b)
