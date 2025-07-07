@@ -117,6 +117,11 @@ local servers = {
         name = "nginx_language_server",
         enable = true,
     },
+    {
+        name = "phpactor",
+        enable = true,
+        setup = require ("configs.lsp.phpactor"),
+    },
 }
 
 table.sort (servers, function (a, b)
