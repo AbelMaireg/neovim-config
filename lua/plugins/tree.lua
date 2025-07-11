@@ -15,11 +15,6 @@ return {
                     no_buffer = false,
                     no_bookmark = false,
                     custom = {
-                        ".git", -- Git directory
-                        "node_modules", -- Node.js dependencies
-                        "vendor", -- PHP dependencies
-                        "logs", -- Log files
-                        "dist", -- Build output
                         ".idea", -- JetBrains IDE files
                         ".vscode", -- Visual Studio Code files
                     },
