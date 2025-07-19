@@ -1,12 +1,13 @@
 {
-    "diagnostics.globals": [
-        "vim",
-        "inlay_hint_conf_gen",
-        "default_lsp_config_merger",
-        "deepMerge",
-        "deepCopy",
-        "lsp_default_config_merger",
-        "ui_utils",
-        "gen_block"
-    ]
+  "diagnostics.globals": [
+    "vim",
+    "inlay_hint_conf_gen",
+    "default_lsp_config_merger",
+    "deepMerge",
+    "deepCopy",
+    "lsp_default_config_merger",
+    "ui_utils",
+    "gen_block",
+    "contains"
+  ]
 }

@@ -73,10 +73,10 @@ local servers = {
         name = "jsonls",
         enable = true,
     },
-    -- {
-    --     name = "yamlls",
-    --     enable = true,
-    -- },
+    {
+        name = "yamlls",
+        enable = true,
+    },
     {
         name = "taplo",
         enable = true,
@@ -119,8 +119,12 @@ local servers = {
     },
     {
         name = "phpactor",
-        enable = true,
+        enable = false,
         setup = require ("configs.lsp.phpactor"),
+    },
+    {
+        name = "intelephense",
+        enable = true,
     },
 }
 
