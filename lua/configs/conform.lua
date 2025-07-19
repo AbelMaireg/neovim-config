@@ -1,13 +1,21 @@
+local javascript_formatters = {
+    "biome",
+    "oxlint",
+    "eslint_d",
+    "prettier",
+    "prettierd",
+}
+
 return {
     formatters_by_ft = {
         bash = {
             "shfmt",
         },
-        docker = {
-            "dockerls",
-        },
         dart = {
             "dart_format",
+        },
+        docker = {
+            "dockerls",
         },
         fish = {
             "shfmt",
@@ -15,13 +23,9 @@ return {
         java = {
             "google-java-format",
         },
-        javascript = {
-            "eslint_d",
-            "prettierd",
-            "prettier",
-            "oxlint",
+        javascript = deepMerge (javascript_formatters, {
             stop_after_first = true,
-        },
+        }),
         kotlin = {
             "ktfmt",
             "ktlint",
@@ -40,27 +44,18 @@ return {
         python = {
             "pyink",
         },
-        typescript = {
-            "prettier",
-            "prettierd",
-            "standardjs",
-            "eslint_d",
-            "oxlint",
+        typescript = deepMerge (javascript_formatters, {
             stop_after_first = true,
-        },
+        }),
         sql = {
             "sql_formatter",
         },
         toml = {
             "taplo",
         },
-        vue = {
-            "eslint_d",
-            "prettierd",
-            "prettier",
-            "oxlint",
+        vue = deepMerge (javascript_formatters, {
             stop_after_first = true,
-        },
+        }),
         xml = {
             "xmlformatter",
         },
