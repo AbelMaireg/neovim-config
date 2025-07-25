@@ -22,10 +22,10 @@ o.foldlevelstart = 99
 
 -- Indenting
 o.expandtab = true
-o.shiftwidth = 2
+o.shiftwidth = 4
 o.smartindent = true
-o.tabstop = 2
-o.softtabstop = 2
+o.tabstop = 4
+o.softtabstop = 4
 
 opt.fillchars = { eob = " " }
 o.ignorecase = true
@@ -133,9 +133,29 @@ create_autocmd ({ "UIEnter", "BufReadPost", "BufNewFile" }, {
     end,
 })
 
-vim.api.nvim_create_autocmd ("BufWritePre", {
+create_autocmd ("BufWritePre", {
     pattern = "*",
     callback = function (args)
         require ("conform").format ({ bufnr = args.buf })
+    end,
+})
+
+vim.api.nvim_create_autocmd ("FileType", {
+    pattern = { "go" },
+    callback = function ()
+        vim.bo.tabstop = 2
+        vim.bo.shiftwidth = 2
+        vim.bo.softtabstop = 2
+        vim.bo.expandtab = false
+    end,
+})
+
+vim.api.nvim_create_autocmd ("FileType", {
+    pattern = { "java" },
+    callback = function ()
+        vim.bo.tabstop = 2
+        vim.bo.shiftwidth = 2
+        vim.bo.softtabstop = 2
+        vim.bo.expandtab = false
     end,
 })
