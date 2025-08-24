@@ -39,7 +39,7 @@ map (
 
 map (
     "n",
-    "<leader>ma",
+    "<leader>fm",
     telescope_builtin.marks,
     { desc = "telescope find marks" }
 )
@@ -60,7 +60,7 @@ map (
 
 map (
     "n",
-    "<leader>pt",
+    "<leader>pt<CR>",
     "<cmd>Telescopr terms",
     { desc = "telescope pick hidden term" }
 )
