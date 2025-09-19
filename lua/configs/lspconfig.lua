@@ -52,6 +52,7 @@ local servers = {
     {
         name = "clangd",
         enable = true,
+        setup = require ("configs.lsp.clangd"),
     },
     {
         name = "pyright",
@@ -124,6 +125,10 @@ local servers = {
     },
     {
         name = "intelephense",
+        enable = true,
+    },
+    {
+        name = "protols",
         enable = true,
     },
 }

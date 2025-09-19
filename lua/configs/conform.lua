@@ -1,9 +1,9 @@
 local javascript_formatters = {
     "biome",
-    "oxlint",
-    "eslint_d",
-    "prettier",
-    "prettierd",
+    -- "oxlint",
+    -- "eslint_d",
+    -- "prettier",
+    -- "prettierd",
 }
 
 return {
@@ -40,6 +40,9 @@ return {
         },
         php = {
             "php-cs-fixer",
+        },
+        proto = {
+            "protolint",
         },
         python = {
             "pyink",
