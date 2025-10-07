@@ -79,9 +79,9 @@ M.ui = {
 }
 
 M.base46 = {
-    theme = "ayu_dark",
+    theme = "radium",
     transparency = false,
-    theme_toggle = { "tokyonight", "ayu_dark" },
+    theme_toggle = { "tokyonight", "radium" },
 
     hl_override = {
         ["@comment"] = { fg = "#afafaf", italic = true },
