@@ -1,43 +1,45 @@
 local map = vim.keymap.set
 local dap = require ("dap")
-local dap_ui_widgets = require ("dap.ui.widgets")
+local dapui = require ("dapui")
 
 map ("n", "<F5>", function ()
     dap.continue ()
+    dapui.open ()
 end, { desc = "debugger continue" })
-map ("n", "<F10>", function ()
+
+map ("n", "<F6>", function ()
     dap.step_over ()
 end, { desc = "debugger step-over" })
-map ("n", "<F11>", function ()
+
+map ("n", "<F7>", function ()
     dap.step_into ()
 end, { desc = "debugger step-into" })
-map ("n", "<F12>", function ()
+
+map ("n", "<F8>", function ()
     dap.step_out ()
 end, { desc = "debugger step-out" })
+
+map ("n", "<Leader>dq", function ()
+    dap.terminate ()
+    dapui.close ()
+end, { desc = "debugger terminate" })
+
 map ("n", "<Leader>b", function ()
     dap.toggle_breakpoint ()
 end, { desc = "debugger toggle-breakpoint" })
+
 map ("n", "<Leader>B", function ()
     dap.set_breakpoint ()
 end, { desc = "debugger set-breakpoint" })
+
 map ("n", "<Leader>lp", function ()
     dap.set_breakpoint (nil, nil, vim.fn.input ("Log point message: "))
 end, { desc = "debugger set-breakpoint" })
+
 map ("n", "<Leader>dr", function ()
     dap.repl.open ()
 end, { desc = "debugger repl open" })
+
 map ("n", "<Leader>dl", function ()
     dap.run_last ()
 end, { desc = "debugger run last" })
-map ({ "n", "v" }, "<Leader>dh", function ()
-    dap_ui_widgets.hover ()
-end, { desc = "debugger ui widgets hover" })
-map ({ "n", "v" }, "<Leader>dp", function ()
-    dap_ui_widgets.preview ()
-end, { desc = "debugger ui widgets preview" })
-map ("n", "<Leader>df", function ()
-    dap_ui_widgets.centered_float (dap_ui_widgets.frames)
-end, { desc = "dubugger ui widgets centered-float framed" })
-map ("n", "<Leader>ds", function ()
-    dap_ui_widgets.centered_float (dap_ui_widgets.scopes)
-end, { desc = "debugger ui widgets centered_float scoped" })
