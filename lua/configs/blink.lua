@@ -11,7 +11,7 @@ return {
         ["<C-e>"] = { "hide", "fallback" },
         ["<CR>"] = { "accept", "fallback" },
 
-        ["<C-v>"] = { "snippet_forward", "fallback" },
+        ["<Tab>"] = { "snippet_forward", "fallback" },
         ["<S-Tab>"] = { "snippet_backward", "fallback" },
 
         ["<Up>"] = { "select_prev", "fallback" },
@@ -19,19 +19,27 @@ return {
         ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
         ["<C-n>"] = { "select_next", "fallback_to_mappings" },
 
-        ["<C-b>"] = { "scroll_documentation_up", "fallback" },
-        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
 
         ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
     },
 
     completion = {
-        documentation = { auto_show = true },
+        documentation = {
+            auto_show = true,
+            window = {
+                border = "double",
+            },
+        },
         list = {
             selection = {
                 preselect = false,
                 auto_insert = true,
             },
+        },
+        menu = {
+            border = "bold",
         },
     },
 
