@@ -1,4 +1,4 @@
-local lspconfig = require ("lspconfig")
+-- local lspconfig = require ("lspconfig")
 lsp_default_config_merger = require ("utils.lsp-default-config-merger")
 
 local servers = {
@@ -140,7 +140,7 @@ end)
 for _, lsp in ipairs (servers) do
     if lsp.enable == true then
         dofile (vim.g.base46_cache .. "lsp")
-        require ("nvchad.lsp").diagnostic_config ()
-        lspconfig[lsp.name].setup (lsp_default_config_merger (lsp.setup))
+        vim.lsp.config (lsp.name, lsp_default_config_merger (lsp.setup))
+        vim.lsp.enable ({ lsp.name })
     end
 end
