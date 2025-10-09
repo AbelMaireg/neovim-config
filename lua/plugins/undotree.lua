@@ -6,5 +6,8 @@ return {
         keys = {
             { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>" },
         },
+        opts = {
+            position = "right",
+        },
     },
 }
