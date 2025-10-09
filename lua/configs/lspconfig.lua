@@ -1,10 +1,9 @@
--- local lspconfig = require ("lspconfig")
 lsp_default_config_merger = require ("utils.lsp-default-config-merger")
 
 local servers = {
     {
         name = "volar",
-        enable = true,
+        enable = false,
         priority = 2,
     },
     {
