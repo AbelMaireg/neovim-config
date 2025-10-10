@@ -60,3 +60,7 @@ map (
     vim.lsp.buf.code_action,
     { noremap = true, silent = true, desc = "lsp code action" }
 )
+
+map ("n", "K", function ()
+    vim.lsp.buf.hover ({ border = "double" })
+end, { noremap = true, silent = true, desc = "lsp hover" })

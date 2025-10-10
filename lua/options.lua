@@ -1,4 +1,4 @@
-local create_autocmd = vim.api.nvim_create_autocmd
+local autocmd = vim.api.nvim_create_autocmd
 local opt = vim.opt
 local o = vim.o
 local g = vim.g
@@ -7,7 +7,7 @@ local g = vim.g
 o.laststatus = 3
 o.showmode = false
 
-o.clipboard = "unnamed"
+o.clipboard = ""
 o.cursorline = true
 o.cursorlineopt = "both"
 o.scrolloff = 10
@@ -69,12 +69,11 @@ vim.env.PATH = table.concat ({ vim.fn.stdpath ("data"), "mason", "bin" }, sep)
     .. delim
     .. vim.env.PATH
 
--- CUSTOM --
-
--- visuals
+-- barbecue setup
 require ("barbecue.ui").toggle (true)
 
-create_autocmd ("TextYankPost", {
+-- highlight on yank
+autocmd ("TextYankPost", {
     pattern = "*",
     callback = function ()
         vim.highlight.on_yank ({
@@ -85,7 +84,8 @@ create_autocmd ("TextYankPost", {
     end,
 })
 
-create_autocmd ("VimEnter", {
+-- open nvim-tree if directory is opened
+autocmd ("VimEnter", {
     callback = function ()
         if
             vim.fn.argc () == 1
@@ -96,15 +96,8 @@ create_autocmd ("VimEnter", {
     end,
 })
 
-local default_hover = vim.lsp.handlers["textDocument/hover"]
-
-vim.lsp.handlers["textDocument/hover"] = function (err, result, ctx, config)
-    if result and result.contents then
-        default_hover (err, result, ctx, config) -- Call the original LSP hover handler
-    end
-end
-
-create_autocmd ({ "UIEnter", "BufReadPost", "BufNewFile" }, {
+-- apply settings from editorconfig, and trigger FileType autocommands
+autocmd ({ "UIEnter", "BufReadPost", "BufNewFile" }, {
     group = vim.api.nvim_create_augroup ("NvFilePost", { clear = true }),
     callback = function (args)
         local file = vim.api.nvim_buf_get_name (args.buf)
@@ -133,58 +126,24 @@ create_autocmd ({ "UIEnter", "BufReadPost", "BufNewFile" }, {
     end,
 })
 
-create_autocmd ("BufWritePre", {
+-- format on save
+autocmd ("BufWritePre", {
     pattern = "*",
     callback = function (args)
         require ("conform").format ({ bufnr = args.buf })
     end,
 })
 
-vim.api.nvim_create_autocmd ("FileType", {
-    pattern = { "go" },
-    callback = function ()
-        vim.bo.tabstop = 2
-        vim.bo.shiftwidth = 2
-        vim.bo.softtabstop = 2
-        vim.bo.expandtab = false
-    end,
-})
-
-vim.api.nvim_create_autocmd ("FileType", {
-    pattern = { "java" },
-    callback = function ()
-        vim.bo.tabstop = 2
-        vim.bo.shiftwidth = 2
-        vim.bo.softtabstop = 2
-        vim.bo.expandtab = false
-    end,
-})
-
-create_autocmd ({ "UIEnter", "BufReadPost", "BufNewFile" }, {
-    group = vim.api.nvim_create_augroup ("NvFilePost", { clear = true }),
-    callback = function (args)
-        local file = vim.api.nvim_buf_get_name (args.buf)
-        local buftype =
-            vim.api.nvim_get_option_value ("buftype", { buf = args.buf })
-
-        if not vim.g.ui_entered and args.event == "UIEnter" then
-            vim.g.ui_entered = true
-        end
-
-        if file ~= "" and buftype ~= "nofile" and vim.g.ui_entered then
-            vim.api.nvim_exec_autocmds (
-                "User",
-                { pattern = "FilePost", modeline = false }
-            )
-            vim.api.nvim_del_augroup_by_name ("NvFilePost")
-
-            vim.schedule (function ()
-                vim.api.nvim_exec_autocmds ("FileType", {})
-
-                if vim.g.editorconfig then
-                    require ("editorconfig").config (args.buf)
-                end
-            end)
-        end
-    end,
-})
+-- filetype specific settings
+local settings = require ("file-type-settings")
+for ft, opts in pairs (settings) do
+    autocmd ("FileType", {
+        pattern = { ft },
+        callback = function ()
+            vim.bo.tabstop = opts.indent.tabstop or 4
+            vim.bo.shiftwidth = opts.indent.shiftwidth or 4
+            vim.bo.softtabstop = opts.indent.softtabstop or 4
+            vim.bo.expandtab = opts.indent.expandtab or true
+        end,
+    })
+end
