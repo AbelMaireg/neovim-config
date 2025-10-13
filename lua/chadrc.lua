@@ -15,7 +15,7 @@ M.ui = {
             "git",
             "%=",
             "%=",
-            "macro_recording",
+            -- "macro_recording",
             "lsp_msg",
             "diagnostics",
             "lsp",
@@ -79,9 +79,9 @@ M.ui = {
 }
 
 M.base46 = {
-    theme = "rosepine",
+    theme = "midnight_breeze",
     transparency = false,
-    theme_toggle = { "tokyonight", "rosepine" },
+    theme_toggle = { "tokyonight", "midnight_breeze" },
 
     hl_override = {
         ["@comment"] = { fg = "#afafaf", italic = true },
