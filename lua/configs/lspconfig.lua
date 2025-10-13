@@ -2,8 +2,8 @@ lsp_default_config_merger = require ("utils.lsp-default-config-merger")
 
 local servers = {
     {
-        name = "volar",
-        enable = false,
+        name = "vue_ls",
+        enable = true,
         priority = 2,
     },
     {
@@ -21,7 +21,7 @@ local servers = {
     {
         name = "tailwindcss",
         setup = require ("configs.lsp.tailwind"),
-        enable = true,
+        enable = false,
     },
     {
         name = "prismals",

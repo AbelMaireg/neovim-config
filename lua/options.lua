@@ -69,9 +69,6 @@ vim.env.PATH = table.concat ({ vim.fn.stdpath ("data"), "mason", "bin" }, sep)
     .. delim
     .. vim.env.PATH
 
--- barbecue setup
-require ("barbecue.ui").toggle (true)
-
 -- highlight on yank
 autocmd ("TextYankPost", {
     pattern = "*",
