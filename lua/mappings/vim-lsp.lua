@@ -6,12 +6,11 @@ map ("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 
 map ("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
 
-map (
-    "n",
-    "<leader>sh",
-    vim.lsp.buf.signature_help,
-    { desc = "Show signature help" }
-)
+map ("n", "<leader>S", function ()
+    vim.lsp.buf.signature_help ({
+        border = "rounded",
+    })
+end, { desc = "Show signature help" })
 
 map (
     "n",
@@ -57,10 +56,15 @@ map (
 map (
     "n",
     "<leader><leader>",
-    vim.lsp.buf.code_action,
-    { noremap = true, silent = true, desc = "lsp code action" }
+    -- vim.lsp.buf.code_action,
+    require ("tiny-code-action").code_action,
+    {
+        noremap = true,
+        silent = true,
+        desc = "lsp code action",
+    }
 )
 
 map ("n", "K", function ()
-    vim.lsp.buf.hover ({ border = "double" })
+    vim.lsp.buf.hover ({ border = "double", max_width = 100, max_height = 30 })
 end, { noremap = true, silent = true, desc = "lsp hover" })

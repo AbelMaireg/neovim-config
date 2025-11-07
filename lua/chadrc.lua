@@ -81,7 +81,7 @@ M.ui = {
 M.base46 = {
     theme = "midnight_breeze",
     transparency = false,
-    theme_toggle = { "tokyonight", "midnight_breeze" },
+    theme_toggle = { "radium", "midnight_breeze" },
 
     hl_override = {
         ["@comment"] = { fg = "#afafaf", italic = true },

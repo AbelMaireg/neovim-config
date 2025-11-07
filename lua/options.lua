@@ -84,11 +84,8 @@ autocmd ("TextYankPost", {
 -- open nvim-tree if directory is opened
 autocmd ("VimEnter", {
     callback = function ()
-        if
-            vim.fn.argc () == 1
-            and vim.fn.isdirectory (vim.fn.argv (0)) == 1
-        then
-            require ("nvim-tree.api").tree.open ()
+        if vim.fn.argc () ~= 1 then
+            require ("telescope.builtin").find_files ()
         end
     end,
 })
@@ -144,3 +141,30 @@ for ft, opts in pairs (settings) do
         end,
     })
 end
+
+-- config for telescope previewer
+autocmd ("User", {
+    pattern = "TelescopePreviewerLoaded",
+    callback = function (args)
+        vim.wo.number = true
+    end,
+})
+
+-- diagnostic config
+vim.diagnostic.config ({
+    virtual_text = {
+        prefix = "●",
+        spacing = 4,
+        source = "if_many",
+    },
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+    float = {
+        border = "rounded",
+        source = "if_many",
+        header = "",
+        prefix = "",
+    },
+})

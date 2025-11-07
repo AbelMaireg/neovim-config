@@ -1,6 +1,10 @@
 local map = vim.keymap.set
 
-map ("n", "gl", vim.diagnostic.open_float, { desc = "Show diagnostic popup" })
+map ("n", "gl", function ()
+    vim.diagnostic.open_float ({
+        border = "single",
+    })
+end, { desc = "Show diagnostic popup" })
 
 map (
     "n",
