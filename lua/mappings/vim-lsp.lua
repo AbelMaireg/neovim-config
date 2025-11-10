@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 map ("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
 
-map ("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+-- map ("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 
 map ("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
 

@@ -92,3 +92,38 @@ map (
     telescope_builtin.registers,
     { desc = "telescope registers" }
 )
+
+map (
+    "n",
+    "<leader>gd",
+    telescope_builtin.lsp_definitions,
+    { desc = "telescope lsp definitions" }
+)
+
+map (
+    "n",
+    "<leader>gi",
+    telescope_builtin.lsp_implementations,
+    { desc = "telescope lsp implementations" }
+)
+
+map (
+    "n",
+    "<leader>gr",
+    telescope_builtin.lsp_references,
+    { desc = "telescope lsp references" }
+)
+
+map (
+    "n",
+    "<leader>gs",
+    telescope_builtin.lsp_document_symbols,
+    { desc = "telescope lsp document symbols" }
+)
+
+map (
+    "n",
+    "<leader>gw",
+    telescope_builtin.lsp_dynamic_workspace_symbols,
+    { desc = "telescope lsp workspace symbols" }
+)

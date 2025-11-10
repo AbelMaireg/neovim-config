@@ -37,6 +37,7 @@ return {
         "some-sass-language-server",
         "sql-formatter",
         "sqls",
+        "stylua",
         "tailwindcss-language-server",
         "taplo",
         "typescript-language-server",
