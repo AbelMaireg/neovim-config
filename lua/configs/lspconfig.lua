@@ -37,6 +37,9 @@ local servers = {
     {
         name = "prismals",
         enable = true,
+        setup = {
+            cmd = { "/home/severus/.bun/bin/prisma-language-server", "--stdio" },
+        },
     },
 
     -- Shell, JSON, YAML, Markdown, etc.
