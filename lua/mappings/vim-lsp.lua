@@ -68,3 +68,11 @@ map (
 map ("n", "K", function ()
     vim.lsp.buf.hover ({ border = "double", max_width = 100, max_height = 30 })
 end, { noremap = true, silent = true, desc = "lsp hover" })
+
+map ("n", "<leader>li", function ()
+    if vim.lsp.inlay_hint.is_enabled () then
+        vim.lsp.inlay_hint.enable (false)
+    else
+        vim.lsp.inlay_hint.enable (true)
+    end
+end, { desc = "toggle lsp inlay hints" })
