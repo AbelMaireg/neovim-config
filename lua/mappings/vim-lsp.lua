@@ -76,3 +76,10 @@ map ("n", "<leader>li", function ()
         vim.lsp.inlay_hint.enable (true)
     end
 end, { desc = "toggle lsp inlay hints" })
+
+map (
+    "n",
+    "<leader>N",
+    require ("nvim-navbuddy").open,
+    { desc = "open navbuddy" }
+)
