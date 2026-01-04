@@ -2,7 +2,10 @@ return {
     {
         "stevearc/conform.nvim",
         config = function ()
-            require ("conform").setup (require ("configs.conform"))
+            local conform = require ("conform")
+            local configs = require ("configs.conform")
+
+            conform.setup (configs)
         end,
     },
 }
