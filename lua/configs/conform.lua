@@ -1,9 +1,9 @@
 local javascript_formatters = {
+    "eslint_d",
+    "prettier",
     "biome",
-    -- "oxlint",
-    -- "eslint_d",
-    -- "prettier",
     -- "prettierd",
+    -- "oxlint",
 }
 
 return {
@@ -24,7 +24,7 @@ return {
             "google-java-format",
         },
         javascript = deepMerge (javascript_formatters, {
-            stop_after_first = true,
+            stop_after_first = false,
         }),
         kotlin = {
             "ktfmt",
@@ -48,7 +48,7 @@ return {
             "pyink",
         },
         typescript = deepMerge (javascript_formatters, {
-            stop_after_first = true,
+            stop_after_first = false,
         }),
         sql = {
             "sql_formatter",
