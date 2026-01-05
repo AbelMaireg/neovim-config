@@ -85,6 +85,7 @@ local servers = {
     { name = "pyright", enable = true },
     { name = "sqls", enable = true },
     { name = "zls", enable = true },
+    { name = "rust_analyzer", enable = true },
 }
 
 table.sort (servers, function (a, b)
