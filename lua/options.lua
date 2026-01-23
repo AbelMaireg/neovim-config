@@ -168,3 +168,15 @@ vim.diagnostic.config ({
         prefix = "",
     },
 })
+
+-- set filetypes for dotenv files
+vim.filetype.add ({
+    pattern = {
+        [".env.*"] = "sh",
+        [".env.local"] = "sh",
+        [".env.development"] = "sh",
+        [".env.production"] = "sh",
+        [".env.example"] = "sh",
+        [".env.test"] = "sh",
+    },
+})
