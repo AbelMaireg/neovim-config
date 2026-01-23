@@ -1,9 +1,8 @@
 local javascript_formatters = {
+    "biome",
     "eslint_d",
     "prettier",
-    "biome",
-    -- "prettierd",
-    -- "oxlint",
+    "oxlint",
 }
 
 return {
