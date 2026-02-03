@@ -62,8 +62,8 @@ return {
             "xmlformatter",
         },
         yaml = {
-            "yamlfmt",
-            "yamllint",
+            -- "yamlfmt",
+            -- "yamllint",
             stop_after_first = true,
         },
         zig = {

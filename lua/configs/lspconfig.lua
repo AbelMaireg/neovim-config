@@ -52,7 +52,7 @@ local servers = {
     { name = "dockerls", enable = true },
     { name = "docker_compose_language_service", enable = true },
     { name = "jsonls", enable = true },
-    { name = "yamlls", enable = true },
+    -- { name = "yamlls", enable = true },
     { name = "taplo", enable = true },
     { name = "marksman", enable = true },
 
