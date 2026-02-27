@@ -86,6 +86,7 @@ local servers = {
     { name = "sqls", enable = true },
     { name = "zls", enable = true },
     { name = "rust_analyzer", enable = true },
+    { name = "csharp_ls", enable = true },
 }
 
 table.sort (servers, function (a, b)
